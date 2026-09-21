@@ -69,7 +69,7 @@ body {
     rgba(255, 255, 255, 0.05)
   );
   backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   /* border: 1px solid rgba(255, 255, 255, 0.35); */
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow:
@@ -85,7 +85,7 @@ body {
     rgba(24, 198, 225, 0.142)
   );
   backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   /* border: 1px solid rgba(255, 255, 255, 0.35); */
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow:
@@ -103,7 +103,7 @@ body {
     rgba(255, 255, 255, 0.15)
   );
   backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   /* border: 1px solid rgba(255, 255, 255, 0.35); */
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow:
