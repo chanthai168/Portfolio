@@ -4,7 +4,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 body {
-  @apply bg-white text-gray-900 dark:bg-black dark:text-gray-100;
+  @apply bg-layer1 text-gray-900 dark:bg-layer1 dark:text-gray-100;
   /* or keep your current styles and override later */
 }
 
@@ -146,4 +146,25 @@ body {
     --glow-radius1: 10px;
     --glow-radius2: 28px;
   }
+}
+
+.crossxy {
+  position:  relative;
+}
+
+.crossxy::before{
+  position: absolute;
+  height: 100%;
+  width: 2px;
+  left:10%;
+  content: "";
+}
+
+.crossxy::after{
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  top:90%;
+  left:-10%;
+  content: "";
 }

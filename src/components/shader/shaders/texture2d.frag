@@ -171,9 +171,9 @@ void main(){
 
     vec2 mouseOffset = (uv - mouseUv) ;
     float mouseDistance = length(mouseOffset) ;
-    float mouseInfluence = smoothstep(
+    float mouseInfluence = 1.0 - smoothstep(
         0.0,
-        0.5,
+        0.2,
         mouseDistance
     );
     // near from mouse get max effect 
@@ -185,10 +185,10 @@ void main(){
     uv = distortedUV ;
 
     // aplly mouse interaction 
-    uv += mouseOffset * mouseInfluence * 0.2;
+    uv += mouseOffset * mouseInfluence * 0.1;
 
     // scale 2*
-    float scale = 0.8;
+    float scale = 0.3;
     uv = (uv - 0.5) / scale + 0.5;
     uv.y = -uv.y + 1.0;
 

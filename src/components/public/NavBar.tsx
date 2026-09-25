@@ -14,11 +14,13 @@ const NavBar = () => {
       width: 'min(400px,55%)',
       height: 46,
       borderRadius: 24,
+      paddingLeft: 3,
+      paddingRight: 2,
     },
     expanded: {
       width: 'min(800px,90%)', 
       height: "auto",
-      borderRadius: 12,
+      borderRadius: 24,
       transition: {
         width: {
           duration: 0.4,
@@ -114,7 +116,7 @@ const NavBar = () => {
         variants={menuVariants}
         initial="collapsed"
         animate={isOpen ? "expanded" : "collapsed"}
-        className="nav-glass  rounded-full  dark:border-0  overflow-hidden relative"
+        className="glass  rounded-full  dark:border-0  overflow-hidden relative"
       >
         <div className="flex items-center justify-between px-4 pl-2 h-11.5">
           <motion.div
@@ -139,17 +141,17 @@ const NavBar = () => {
             <motion.span
               variants={topBarVariants}
               animate={isOpen ? "expanded" : "collapsed"}
-              className="block w-6 h-0.5 bg-black rounded-full origin-center"
+              className="block w-6 h-0.5 bg-black dark:bg-white rounded-full origin-center"
             />
             <motion.span
               variants={middleBarVariants}
               animate={isOpen ? "expanded" : "collapsed"}
-              className="block w-6 h-0.5 bg-black rounded-full origin-center"
+              className="block w-6 h-0.5 bg-black dark:bg-white rounded-full origin-center"
             />
             <motion.span
               variants={bottomBarVariants}
               animate={isOpen ? "expanded" : "collapsed"}
-              className="block w-6 h-0.5 bg-black rounded-full origin-center"
+              className="block w-6 h-0.5 bg-black dark:bg-white rounded-full origin-center"
             />
           </motion.button>
         </div>
@@ -175,7 +177,7 @@ const NavBar = () => {
                         key={item}
                         variants={linkVariants}
                         href="#"
-                        className="block nav-links px-3 py-2.5 text-lg rounded-lg transition-all duration-200 hover:text-gray-500"
+                        className="block nav-links px-3 py-2.5 text-lg rounded-lg transition-all duration-200"
                         onClick={() => setIsOpen(false)}
                       >
                         {item}
@@ -210,7 +212,7 @@ const NavBar = () => {
                         key={item}
                         variants={linkVariants}
                         href="#"
-                        className="block nav-links px-3 py-2.5 text-lg rounded-lg transition-all duration-200 hover:text-gray-500"
+                        className="block nav-links px-3 py-2.5 text-lg rounded-lg transition-all duration-200 "
                         onClick={() => setIsOpen(false)}
                       >
                         {item}

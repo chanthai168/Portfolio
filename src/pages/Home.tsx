@@ -23,6 +23,8 @@ const Home:React.FC = () => {
         scrollDownBoosts        // scroll down → faster fall (default)
         maxScrollBoost={4}
         scrollDecay={0.40}      // longer tail; try 0.85 for snappier
+        minSize={10}
+        maxSize={20}
         />
 
         <div >
@@ -30,7 +32,7 @@ const Home:React.FC = () => {
         </div>
         <div className=" flex pt-24 sm:pt-12 justify-center relative ">
             <h1 className="my-name  md:block text-2xl text-green-500  absolute left-20 top-18">Junior</h1>
-            <h1 className="text-[50px] sm:text-[160px] text-black/70 dark:text-white/70 text-center font-bold flex p-0">Software Engineer</h1>
+            <h1 className="text-[50px] sm:text-[160px] text-textColor text-center font-bold flex p-0">PORTFOLIO</h1>
         </div>
         <div className=" flex flex-col items-center text-xl relative  md:-top-8">
             <p>My <span className=" bg-gray-300 glass p-1 px-2 rounded-full">intention</span> is to build the Sofware </p>
@@ -41,12 +43,12 @@ const Home:React.FC = () => {
             <Intro/> 
         </div>
 
-        <div className=" text-gray-200">
-            <h2 className=" text-center font-semibold  text-xl">Here is the agenda for today.</h2>
+        <div className=" text-textColor flex flex-col gap-6 mt-32 mb-48">
+            <h2 className=" text-center font-semibold  text-6xl">The agenda for today.</h2>
             <div className=" flex justify-center gap-6 ">
-                <Link to="#">Project→</Link>
-                <Link to="#">Tools→</Link>
-                <Link to="#">Contact→</Link>
+                <Link to="#" className=" text-lg">Project→</Link>
+                <Link to="#" className=" text-lg">Tools→</Link>
+                <Link to="#" className=" text-lg">Contact→</Link>
             </div>
 
         </div>
@@ -62,13 +64,11 @@ const Home:React.FC = () => {
         <div>
             <Footer/>
         </div>
+
         <div>
             <TextureShaderBackground/>
         </div>
-        <div>
-            <ShaderBackground/>
-        </div>
-
+        
         </>
 
     )

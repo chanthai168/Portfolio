@@ -4,11 +4,11 @@ const SkillsSection: React.FC = () => {
   const skills = [
     {
       category: "Front-end",
-      items: "HTML5, CSS3, React.js, Nextjs, TailwindCSS",
+      items: "HTML5, CSS3, React.js, TailwindCSS, Nextjs",
     },
     {
       category: "Backend",
-      items: "Javascript, Typescript, ExpressJs, Auth0",
+      items: "Javascript, Typescript, ExpressJs, NestJs",
     },
     {
       category: "Database",
@@ -16,7 +16,7 @@ const SkillsSection: React.FC = () => {
     },
     {
       category: "Deployment",
-      items: "Docker, CI/CD, Github Actions, Kubernetes",
+      items: "Docker, CI/CD, Github Actions",
     },
     {
       category: "Other",
@@ -25,7 +25,7 @@ const SkillsSection: React.FC = () => {
   ];
 
   return (
-    <section className="section-glass w-full bg-gray-100 text-black">
+    <section className=" w-full bg-layer2 mt-40 text-textColor">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="flex flex-col gap-10 lg:flex-row lg:gap-20">
           {/* Left title */}
@@ -39,9 +39,6 @@ const SkillsSection: React.FC = () => {
 
           {/* Right content */}
           <div className="lg:w-2/3">
-            <p className="mb-10 text-xl font-medium sm:text-2xl">
-              Tools is important but fundamental is much more.
-            </p>
 
             <div className="space-y-5">
               {skills.map((skill) => (
@@ -52,7 +49,7 @@ const SkillsSection: React.FC = () => {
                   <span className="w-32 shrink-0 text-base font-semibold sm:text-lg">
                     {skill.category}
                   </span>
-                  <span className="text-base text-gray-900 sm:text-lg">
+                  <span className="text-base text-gray-900 dark:text-gray-300 sm:text-lg">
                     {skill.items}
                   </span>
                 </div>

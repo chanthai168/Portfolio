@@ -26,7 +26,7 @@ const Letter: React.FC<{
   return (
     <motion.span
       style={{ y, rotate, display: "inline-block" }}
-      className="bg-gradient-to-b from-orange-500 to-red-500 bg-clip-text text-transparent will-change-transform"
+      className="text-textColor bg-clip-text will-change-transform"
     >
       {char === " " ? "\u00A0" : char}
     </motion.span>
@@ -61,14 +61,14 @@ const Footer: React.FC = () => {
   const chars = NAME.split("");
 
   return (
-    <section ref={footerRef} className="w-full bg-gray-100 section-glass text-black">
+    <section ref={footerRef} className="w-full  -bg-linear-90 overflow-hidden  bg-layer2 text-textColor">
       <div className="mx-auto px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-        <div className="mb-10 flex flex-col md:px-32 gap-6 sm:mb-14 sm:flex-row sm:items-start sm:justify-between">
-          <p className="max-w-md text-base font-semibold leading-relaxed sm:text-lg">
-            We all live inside our own fantasy.
+        <div className="mb-10 flex flex-col items-center md:px-32 gap-6 sm:mb-14 sm:flex-row sm:items-start sm:justify-between">
+          <p className="max-w-md text-base  leading-relaxed sm:text-lg">
+            Say <span className=" bg-blue-500 px-2 text-white rounded-sm">Hello</span> to me 
           </p>
 
-          <div className="space-y-1 text-sm sm:text-left sm:text-base">
+          {/* <div className="space-y-1 text-sm sm:text-left sm:text-base">
             <p>
               <span className="font-medium">Facebook:</span> San Chanthai
             </p>
@@ -92,10 +92,17 @@ const Footer: React.FC = () => {
                 @chanthai168
               </a>
             </p>
+          </div> */}
+
+          <div className=" flex gap-1">
+            <p className="nav-glass p-2.5 rounded-l-full">📞</p>
+            <p className="nav-glass p-2.5 rounded-full">📞</p>
+            <p className="nav-glass p-2.5 rounded-full">📞</p>
+            <p className="nav-glass p-2.5 rounded-r-full">📞</p>
           </div>
         </div>
 
-        <h1 className="text-[54px] sm:text-[160px] text-center font-bold flex justify-center leading-none pb-6">
+        <h1 className="text-[54px] sm:text-[200px] text-center font-bold flex justify-center leading-none pb-6">
           {chars.map((char, i) => (
             <Letter
               key={i}
@@ -106,6 +113,14 @@ const Footer: React.FC = () => {
             />
           ))}
         </h1>
+
+        <div className="flex justify-between">
+          <p>©️ All right reserved.</p>
+          <p>2026</p>
+          <p>By San Chanthai</p>
+        </div>
+
+
       </div>
     </section>
   );
