@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <h1 className="text-[54px] sm:text-[200px] text-center font-bold flex justify-center leading-none pb-6">
+        <h1 className=" text-[48px] sm:text-[200px] text-center font-bold flex justify-center  pb-6">
           {chars.map((char, i) => (
             <Letter
               key={i}
@@ -115,9 +115,9 @@ const Footer: React.FC = () => {
         </h1>
 
         <div className="flex justify-between">
-          <p>©️ All right reserved.</p>
-          <p>2026</p>
-          <p>By San Chanthai</p>
+          <p className=" text-sm sm:text-md">©️ All right reserved.</p>
+          <p className=" text-sm sm:text-md">2026</p>
+          <p className=" text-sm sm:text-md">By San Chanthai</p>
         </div>
 
 
