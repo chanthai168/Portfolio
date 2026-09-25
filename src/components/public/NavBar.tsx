@@ -27,9 +27,9 @@ const NavBar = () => {
           ease: [0.4, 0, 0.2, 1],
         },
         height: {
-          duration: 0.35,
+          duration: 0.3,
           ease: [0.4, 0, 0.2, 1],
-          delay: 0.3,
+          delay: 0.4,
         },
         borderRadius: {
           duration: 0.5,
