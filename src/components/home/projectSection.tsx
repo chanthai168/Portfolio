@@ -118,7 +118,7 @@ const ProjectSection: React.FC = () => {
                    -translate-x-1/2 rounded-[400px] bg-gray-200 dark:bg-layer2"
       ></div>
 
-      <div className="flex flex-col items-center gap-4 md:gap-32 justify-center mb-4 mt-12 pt-12">
+      <div className="flex flex-col md:flex-row items-center gap-4 md:gap-32 justify-center mb-4 mt-12 pt-12">
         <div>
           <h2 className="text-3xl font-semibold">Swift POS Pro</h2>
         </div>

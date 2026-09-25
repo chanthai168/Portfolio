@@ -168,3 +168,12 @@ body {
   left:-10%;
   content: "";
 }
+
+@media (max-width:640px){
+  .crossxy::after{
+    top:95%;
+  }
+  .crossxy::before{
+    left:5%;
+  }
+}

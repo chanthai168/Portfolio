@@ -16,7 +16,7 @@ const NavBar = () => {
     },
     expanded: {
       width: "min(800px, 90%)",
-      height: "auto",
+      height: "400px",
       borderRadius: 24,
       transition: {
         width: {
@@ -148,7 +148,7 @@ const NavBar = () => {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               // 4. FIXED GRID: Added gap and proper padding for vertical space
-              className="grid grid-cols-2 gap-x-6 gap-y-4 px-4 pb-5 pt-2"
+              className="grid grid-cols-2 gap-x-6 gap-y-4 px-4 pt-2"
             >
               {/* Column 1 */}
               <motion.div
@@ -166,7 +166,7 @@ const NavBar = () => {
                       href="#"
                       className={`block ${
                         index > 0 ? "nav-links text-lg" : "text-md font-semibold"
-                      } px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-black/5 dark:hover:bg-white/10`}
+                      } px-3 py-2.5 rounded-lg transition-all duration-200`}
                       onClick={() => setIsOpen(false)}
                     >
                       {item}
@@ -193,7 +193,7 @@ const NavBar = () => {
                       href="#"
                       className={`block ${
                         index > 0 ? "nav-links text-lg" : "text-md font-semibold"
-                      } px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-black/5 dark:hover:bg-white/10`}
+                      } px-3 py-2.5 rounded-lg transition-all duration-200 `}
                       onClick={() => setIsOpen(false)}
                     >
                       {item}
@@ -204,7 +204,7 @@ const NavBar = () => {
               </motion.div>
 
               {/* 5. FIXED: ThemeToggle now spans both columns so it doesn't break the grid layout */}
-              <div className="col-span-2 flex justify-end pt-2">
+              <div className="col-span-2 flex justify-end pt-2 pr-2">
                 <ThemeToggle />
               </div>
             </motion.div>
