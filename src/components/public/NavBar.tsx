@@ -5,20 +5,17 @@ import { ThemeToggle } from "./ThemToggle";
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
+  // 1. KEPT YOUR EXACT STYLE: Width expands first, then height follows.
   const menuVariants: Variants = {
     collapsed: {
-      width: 'min(400px,55%)',
+      width: "min(400px, 55%)",
       height: 46,
       borderRadius: 24,
-      paddingLeft: 3,
-      paddingRight: 2,
     },
     expanded: {
-      width: 'min(800px,90%)', 
+      width: "min(800px, 90%)",
       height: "auto",
       borderRadius: 24,
       transition: {
@@ -29,7 +26,7 @@ const NavBar = () => {
         height: {
           duration: 0.3,
           ease: [0.4, 0, 0.2, 1],
-          delay: 0.4,
+          delay: 0.4, // Height waits for width to start/finish
         },
         borderRadius: {
           duration: 0.5,
@@ -39,55 +36,42 @@ const NavBar = () => {
     },
   };
 
-  const linksContainerVariantsV1: Variants = {
+  // 2. FIXED: Removed "height" animation from children. 
+  // Let the parent handle height. Children only animate opacity/position (GPU accelerated = no lag).
+  const linksContainerVariants: Variants = {
     collapsed: {
-      height: 0,
+      opacity: 0,
+      y: 0,
       transition: {
-        duration: 0.25,
+        duration: 0.2,
         ease: "easeIn",
+        staggerChildren: 0.04,
       },
     },
     expanded: {
-      height: "auto",
+      opacity: 1,
+      y: 0,
       transition: {
+        delay: 0.6,
         duration: 0.35,
         ease: "easeOut",
-        staggerChildren: 0.04,
+        staggerChildren: 0.06,
       },
     },
   };
 
-   const linksContainerVariantsV2: Variants = {
-    collapsed: {
-      height: 0,
-      transition: {
-        duration: 0.25,
-        ease: "easeIn",
-      },
-    },
-    expanded: {
-      height: "auto",
-      transition: {
-        duration: 0.35,
-        ease: "easeOut",
-        staggerChildren: 0.04,
-      },
-    },
-  };
-
-  // Slide in from the right with simultaneous opacity & transform
   const linkVariants: Variants = {
     collapsed: {
       opacity: 0,
-      x: -40,
+      y: -40,
       scale: 0.95,
     },
     expanded: {
       opacity: 1,
-      x: 0,
+      y:0,
       scale: 1,
       transition: {
-        opacity: { delay:0.3,duration: 0.8, ease:[0.4, 0, 0.2, 1] },
+        opacity: { duration: 1.5, ease: [0.4, 0, 0.2, 1] },
         x: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
         scale: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
       },
@@ -110,30 +94,29 @@ const NavBar = () => {
   };
 
   return (
-    <div className="fixed z-10 flex justify-end  w-full  mt-2 pr-2">
-      
+    <div className="fixed z-10 flex justify-end w-full mt-2 pr-2">
       <motion.nav
+        layout // 3. MAGIC PROP: Helps Framer Motion smoothly interpolate "height: auto" without layout thrashing
         variants={menuVariants}
         initial="collapsed"
         animate={isOpen ? "expanded" : "collapsed"}
-        className="glass  rounded-full  dark:border-0  overflow-hidden relative"
+        className="glass rounded-full dark:border-0 overflow-hidden relative"
       >
-        <div className="flex items-center justify-between px-4 pl-2 h-11.5">
+        {/* Top Bar */}
+        <div className="flex items-center justify-between px-4 h-11.5">
           <motion.div
-            initial={{ opacity: 1 }}
-            animate={{ opacity: isOpen ? 1 : 1 }}
-            transition={{ duration: 0.2 }}
             className="flex items-center space-x-2"
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2 }}
           >
-            <div className="w-7 h-7 bg-linear-to-b from-green-400 to-green-500  rounded-2xl flex items-center justify-center text-white text-xs font-bold">
+            <div className="w-7 h-7 bg-linear-to-b from-green-400 to-green-500 rounded-2xl flex items-center justify-center text-white text-xs font-bold">
               T
             </div>
-            {/* <span className="font-semibold text-gray-700 text-sm">Logo</span> */}
           </motion.div>
 
           <motion.button
             onClick={toggleMenu}
-            className="flex flex-col space-y-1.5 p-1  rounded-lg  transition-colors relative z-10"
+            className="flex flex-col space-y-1.5 p-1 rounded-lg transition-colors relative z-10"
             aria-label="Toggle menu"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -156,81 +139,78 @@ const NavBar = () => {
           </motion.button>
         </div>
 
-        
-        <div className=" grid grid-cols-2 p-8">
-          <AnimatePresence mode="wait">
+        {/* Grid Container */}
+        <AnimatePresence mode="wait">
           {isOpen && (
             <motion.div
-              variants={linksContainerVariantsV1}
-              initial="collapsed"
-              animate="expanded"
-              exit="collapsed"
-              className="overflow-hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              // 4. FIXED GRID: Added gap and proper padding for vertical space
+              className="grid grid-cols-2 gap-x-6 gap-y-4 px-4 pb-5 pt-2"
             >
-              
-                <div className="">
-                  <p className=" text-black">Page →</p>
+              {/* Column 1 */}
+              <motion.div
+                variants={linksContainerVariants}
+                initial="collapsed"
+                animate="expanded"
+                exit="collapsed"
+                className="text-black space-y-1.5"
+              >
+                {["Page →", "Home", "About", "Services", "Contact"].map(
+                  (item, index) => (
+                    <motion.a
+                      key={item}
+                      variants={linkVariants}
+                      href="#"
+                      className={`block ${
+                        index > 0 ? "nav-links text-lg" : "text-md font-semibold"
+                      } px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-black/5 dark:hover:bg-white/10`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item}
+                    </motion.a>
+                  )
+                )}
+                
+              </motion.div>
 
-                  <div className=" pb-4 pt-1  text-black space-y-1.5 ">
-                    {["Home", "About", "Services", "Contact"].map((item) => (
-                      <motion.a
-                        key={item}
-                        variants={linkVariants}
-                        href="#"
-                        className="block nav-links px-3 py-2.5 text-lg rounded-lg transition-all duration-200"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {item}
-                      </motion.a>
-                    ))}
-                  </div>
-                </div>
+              {/* Column 2 */}
+              <motion.div
+                variants={linksContainerVariants}
+                initial="collapsed"
+                animate="expanded"
+                exit="collapsed"
+                className="text-black space-y-1.5"
+              >
+                
+                {["Quick Link →", "Projects", "Technologies", "About", "Contact"].map(
+                  (item, index) => (
+                    <motion.a
+                      key={item}
+                      variants={linkVariants}
+                      href="#"
+                      className={`block ${
+                        index > 0 ? "nav-links text-lg" : "text-md font-semibold"
+                      } px-3 py-2.5 rounded-lg transition-all duration-200 hover:bg-black/5 dark:hover:bg-white/10`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item}
+                    </motion.a>
+                  )
+                )}
+                
+              </motion.div>
 
-              
-
+              {/* 5. FIXED: ThemeToggle now spans both columns so it doesn't break the grid layout */}
+              <div className="col-span-2 flex justify-end pt-2">
+                <ThemeToggle />
+              </div>
             </motion.div>
           )}
-          </AnimatePresence>
-          
-          <AnimatePresence mode="wait">
-          {isOpen && (
-            <motion.div
-              variants={linksContainerVariantsV2}
-              initial="collapsed"
-              animate="expanded"
-              exit="collapsed"
-              className="overflow-hidden"
-            >
-              
-
-                <div>
-                  <p className=" text-black">Quick Link →</p>
-                  
-                  <div className=" pb-4 pt-1   text-black space-y-1.5 ">
-                    {["Projects", "Technologies", "About", "Contact"].map((item) => (
-                      <motion.a
-                        key={item}
-                        variants={linkVariants}
-                        href="#"
-                        className="block nav-links px-3 py-2.5 text-lg rounded-lg transition-all duration-200 "
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {item}
-                      </motion.a>
-                    ))}
-                  </div>
-                </div>
-              
-
-            </motion.div>
-          )}
-          </AnimatePresence>
-
-          <ThemeToggle/>
-        </div>
-        
+        </AnimatePresence>
       </motion.nav>
-      
     </div>
   );
 };
