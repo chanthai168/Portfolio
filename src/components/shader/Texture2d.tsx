@@ -10,7 +10,7 @@ import {
 } from "./Shader.js";
 
 import vertexShaderSource from "./shaders/background.vert?raw";
-import fragmentShaderSource from "./shaders/texture2d.frag?raw";
+import fragmentShaderSource from "./shaders/texture2dv2.frag?raw";
 
 export default function TextureShaderBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

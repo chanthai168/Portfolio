@@ -15,7 +15,7 @@ const Home:React.FC = () => {
         <>
 
         <IceParticles
-        layer="foreground"
+        layer="background"
         spriteSrc={[snowFlake, snowFlake]}
         particleCount={10}
         scrollReactive
