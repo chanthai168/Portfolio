@@ -15,7 +15,7 @@ const NavBar = () => {
       borderRadius: 24,
     },
     expanded: {
-      width: "min(800px, 90%)",
+      width: "min(800px, 98%)",
       height: "400px",
       borderRadius: 24,
       transition: {

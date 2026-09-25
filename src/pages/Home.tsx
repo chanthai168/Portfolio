@@ -14,7 +14,7 @@ const Home:React.FC = () => {
     return (
         <>
 
-        <IceParticles
+        {/* <IceParticles
         layer="background"
         spriteSrc={[snowFlake, snowFlake]}
         particleCount={10}
@@ -25,7 +25,7 @@ const Home:React.FC = () => {
         scrollDecay={0.40}      // longer tail; try 0.85 for snappier
         minSize={10}
         maxSize={20}
-        />
+        /> */}
 
         <div >
             <NavBar/>
