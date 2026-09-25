@@ -72,7 +72,7 @@ const NavBar = () => {
       scale: 1,
       transition: {
         opacity: { duration: 1.5, ease: [0.4, 0, 0.2, 1] },
-        x: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+        y: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
         scale: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
       },
     },
@@ -96,7 +96,6 @@ const NavBar = () => {
   return (
     <div className="fixed z-10 flex justify-end w-full mt-2 pr-2">
       <motion.nav
-        layout // 3. MAGIC PROP: Helps Framer Motion smoothly interpolate "height: auto" without layout thrashing
         variants={menuVariants}
         initial="collapsed"
         animate={isOpen ? "expanded" : "collapsed"}

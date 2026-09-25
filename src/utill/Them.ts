@@ -12,5 +12,5 @@ export function setTheme(theme: "light" | "dark") {
 export function getPreferredTheme(): "light" | "dark" {
   const saved = localStorage.getItem("theme") as "light" | "dark" | null;
   if (saved) return saved;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return window.matchMedia("(prefers-color-scheme: light)").matches ? "dark" : "light";
 }
