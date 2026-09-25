@@ -94,12 +94,12 @@ const NavBar = () => {
   };
 
   return (
-    <div className="fixed z-10 flex justify-end w-full mt-2 pr-2">
+    <div className="fixed z-10 flex justify-center w-full mt-2 ">
       <motion.nav
         variants={menuVariants}
         initial="collapsed"
         animate={isOpen ? "expanded" : "collapsed"}
-        className="bg-white rounded-full dark:border-0 overflow-hidden relative"
+        className="bg-white/60 backdrop-blur-sm rounded-full dark:border-0 overflow-hidden relative"
       >
         {/* Top Bar */}
         <div className="flex items-center justify-between px-4 h-11.5">
