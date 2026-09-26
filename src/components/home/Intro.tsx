@@ -1,4 +1,4 @@
-import naruto from '../../assets/narutov2.jpg'
+import naruto from '../../assets/me.png'
 const Intro:React.FC = () => {
     return (
         <>
@@ -13,13 +13,12 @@ const Intro:React.FC = () => {
                     <p className=" lg:text-xl mb-4 text-textColor">
                         Currently pursuing a Bachelor's degree in Computer Science (Software Engineering specialization). 
                         Experienced in full-stack web development. A team player at heart. 
-                        Passionate about drawing and frame-by-frame (FBF) animation.
                     </p>
 
                     <button className='  font-semibold self-start rounded-xl text-green-500'>My Resume →</button>
                 </div>
 
-                <div className=" flex justify-center rounded-3xl items-center w-full md:w-140 -bg-linear-90 from-blue-500 to-green-500 text-white h-100  ">
+                <div className=" flex justify-center rounded-3xl items-center w-full md:w-140 -bg-linear-90 from-yellow-500 to-green-500 text-white h-100  ">
                     <img src={naruto} alt="" className='w-[80%] md:w-[60%] rounded-3xl' />
                 </div>
             </div>

@@ -9,7 +9,7 @@ const ProjectSection: React.FC = () => {
 
   // Array of text variants for each slide
   const slideTexts = [
-    { line1: 'Streamlined Point of Sale Experience', line2: 'Fast, intuitive, and reliable checkout' },
+    { line1: 'Streamlined Point of sale', line2: 'Fast, intuitive, and reliable checkout' },
     { line1: 'Real-time Analytics & Insights', line2: 'Track inventory and revenue live' },
     { line1: 'Multi-device Synchronization', line2: 'Seamless connectivity across mobile & desktop' },
     { line1: 'Secure Cloud Backup', line2: 'Your data, protected 24/7 everywhere' },
