@@ -254,7 +254,7 @@ export default function TextureShaderBackground() {
   return (
     <div
       ref={wrapperRef}
-      className=" fixed inset-0 -z-10 h-full w-full will-change-transform"
+      className=" fixed inset-0 -z-10 h-[200%] top-[50%] translate-y-[-50%]  left-[50%] translate-x-[-50%] w-[200%] md:translate-0 md:top-0 md:left-0 md:h-full md:w-full will-change-transform"
       style={{ transform: "translate3d(0, 0, 0)" }} // initial
     >
       <canvas
