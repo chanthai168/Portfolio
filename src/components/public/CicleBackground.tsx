@@ -25,7 +25,7 @@ const VERTEX_SHADER = /* glsl */ `
     float base   = aOrbit.w;
 
     float omega = uSpin / (0.35 + radius * 0.6);
-    float angle = aOrbit.y + uTime * omega;
+    float angle = aOrbit.y + uTime * omega * 0.2    ;
 
     vec3 pos = vec3(cos(angle) * radius, height, sin(angle) * radius);
 
@@ -68,12 +68,12 @@ function buildAndromeda(count: number) {
   const colors    = new Float32Array(count * 3)
   const seeds     = new Float32Array(count)
 
-  const DISK_RADIUS = 5.6
+  const DISK_RADIUS = 7.6
   const BULGE_RADIUS = 1.15
-  const BULGE_FRACTION = 0.24
-  const ARMS = 2
+  const BULGE_FRACTION = 0.14
+  const ARMS = 3
   const ARM_TIGHTNESS = 3.6
-  const ARM_SCATTER = 0.34
+  const ARM_SCATTER = 0.24
   const FIELD_STAR_FRACTION = 0.28
 
   const bulgeCount = Math.floor(count * BULGE_FRACTION)
@@ -147,7 +147,7 @@ function buildAndromeda(count: number) {
 /*  Galaxy                                                             */
 /* ------------------------------------------------------------------ */
 
-function Galaxy({ count = 12000, spin = 0.3 }: { count?: number; spin?: number }) {
+function Galaxy({ count = 22000, spin = 0.5 }: { count?: number; spin?: number }) {
   const matRef = useRef<ShaderMaterial>(null)
   const { positions, orbits, colors, seeds } = useMemo(() => buildAndromeda(count), [count])
 

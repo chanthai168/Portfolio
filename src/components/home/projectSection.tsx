@@ -205,7 +205,7 @@ const ProjectSection: React.FC = () => {
     <div className="relative mt-20 z-0 pb-6">
       <div
         className="absolute -z-10 left-1/2 -top-8 h-140 md:h-200 w-[90vw] md:w-[80vw]
-                   -translate-x-1/2 rounded-[400px] bg-gray-200 dark:bg-layer2"
+                   -translate-x-1/2 rounded-[400px] bg-gray-200/20 dark:bg-layer2/20"
       ></div>
 
       <div className="flex flex-col md:flex-row items-center gap-4 md:gap-32 justify-center mb-4 mt-12 pt-12">

@@ -115,9 +115,9 @@ const CSS = `
   }
 
   /* ---- SVG rings & brackets ---- */
-  .cif-ring-a { transform-origin: center; animation: cif-spin 24s linear infinite; }
-  .cif-ring-b { transform-origin: center; animation: cif-spin 40s linear infinite reverse; }
-  .cif-ticks  { transform-origin: center; animation: cif-spin 60s linear infinite reverse; }
+  .cif-ring-a { transform-origin: center; animation: cif-spin 100s linear infinite; }
+  .cif-ring-b { transform-origin: center; animation: cif-spin 110s linear infinite reverse; }
+  .cif-ticks  { transform-origin: center; animation: cif-spin 90s linear infinite reverse; }
 
   .cif-corner-path {
     fill: none;
@@ -281,36 +281,36 @@ export default function CosmicImageFrame({
             strokeDasharray="0.5 4" opacity="0.5" />
 
           {/* Top-Left (arm blue) */}
-          <g color={COSMIC.arm}>
+          {/* <g color={COSMIC.arm}>
             <path className="cif-corner-path" d="M 8 22 L 8 8 L 22 8"
               stroke="currentColor" strokeWidth="1" />
             <circle className="cif-corner-dot" cx="8" cy="8" r="1"
               fill="currentColor" />
-          </g>
+          </g> */}
           {/* Top-Right (HII pink) */}
-          <g color={COSMIC.hii}>
+          {/* <g color={COSMIC.hii}>
             <path className="cif-corner-path" d="M 78 8 L 92 8 L 92 22"
               stroke="currentColor" strokeWidth="1"
               style={{ animationDelay: '0.4s' }} />
             <circle className="cif-corner-dot" cx="92" cy="8" r="1"
               fill="currentColor" style={{ animationDelay: '0.4s' }} />
-          </g>
+          </g> */}
           {/* Bottom-Right (core gold) */}
-          <g color={COSMIC.core}>
+          {/* <g color={COSMIC.core}>
             <path className="cif-corner-path" d="M 92 78 L 92 92 L 78 92"
               stroke="currentColor" strokeWidth="1"
               style={{ animationDelay: '0.8s' }} />
             <circle className="cif-corner-dot" cx="92" cy="92" r="1"
               fill="currentColor" style={{ animationDelay: '0.8s' }} />
-          </g>
+          </g> */}
           {/* Bottom-Left (arm blue) */}
-          <g color={COSMIC.arm}>
+          {/* <g color={COSMIC.arm}>
             <path className="cif-corner-path" d="M 22 92 L 8 92 L 8 78"
               stroke="currentColor" strokeWidth="1"
               style={{ animationDelay: '1.2s' }} />
             <circle className="cif-corner-dot" cx="8" cy="92" r="1"
               fill="currentColor" style={{ animationDelay: '1.2s' }} />
-          </g>
+          </g> */}
         </svg>
 
         {/* orbiting stars */}
