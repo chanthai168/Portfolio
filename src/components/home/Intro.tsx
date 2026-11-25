@@ -1,8 +1,9 @@
 import naruto from '../../assets/me.png'
+import Profile from './Profile';
 const Intro:React.FC = () => {
     return (
         <>
-            <div className=" flex justify-center gap-6 md:gap-8 lg:gap-24 flex-col sm:flex-row">
+            <div className=" pt-18 flex gap-24 justify-center md:gap-8 lg:gap-24 flex-col-reverse sm:flex-row">
                 <div className="flex flex-col rounded-3xl  w-full md:w-162 text-white h-auto py-6 sm:py-12 p-10  md:p-16 lg:px-24
                 crossxy after:bg-gray-400 before:bg-gray-400
                           dark:after:bg-gray-300 dark:before:bg-gray-300
@@ -18,9 +19,7 @@ const Intro:React.FC = () => {
                     <button className='  font-semibold self-start rounded-xl text-green-500'>My Resume →</button>
                 </div>
 
-                <div className=" flex justify-center rounded-3xl items-center w-full md:w-140 -bg-linear-90 from-yellow-500 to-green-500 text-white h-100  ">
-                    <img src={naruto} alt="" className='w-[80%] md:w-[60%] rounded-3xl' />
-                </div>
+                <Profile/>
             </div>
         </>
 

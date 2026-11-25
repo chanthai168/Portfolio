@@ -4,6 +4,34 @@ import naruto2 from '../../assets/Screenshot 2026-08-10 065350.png';
 import naruto3 from '../../assets/Screenshot 2026-08-10 065558.png';
 import naruto4 from '../../assets/Screenshot 2026-08-11 163412.png';
 
+const dotCircleIcon = <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+	<path d="M0 0h24v24H0z" fill="none" />
+	<g fill="none">
+		<circle cx="12" cy="12" r="10.22" fill="currentColor" opacity=".2" transform="rotate(90 12 12)" />
+		<circle cx="12" cy="12" r="10.22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="rotate(90 12 12)" />
+		<path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.23 12a1.23 1.23 0 1 1-2.46 0a1.23 1.23 0 0 1 2.46 0" />
+	</g>
+</svg>
+
+const pausIcon = <svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" viewBox="0 0 24 24">
+	<path d="M0 0h24v24H0z" fill="none" />
+	<g fill="none">
+		<path fill="currentColor" fill-rule="evenodd" d="M20.9 13.5a8.9 8.9 0 1 1-17.8 0a8.9 8.9 0 0 1 17.8 0" clip-rule="evenodd" opacity=".2" />
+		<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.81 16.5v-6.2m4.38 6.2v-6.2" />
+		<circle cx="12" cy="13.4" r="8.8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+		<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.74 1.79H7.26" />
+	</g>
+</svg>
+
+const triangleIcon = <svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" viewBox="0 0 24 24">
+	<path d="M0 0h24v24H0z" fill="none" />
+	<g fill="none">
+		<path fill="currentColor" d="M8.46 6.82L3.62 15.8c-1.42 2.63-2.13 3.95-1.55 4.93s2.07.97 5.07.97h9.7c3 0 4.5 0 5.08-.98c.59-.97-.13-2.3-1.56-4.93l-4.87-8.97c-1.55-2.86-2.33-4.3-3.52-4.29c-1.2 0-1.97 1.44-3.51 4.3" opacity=".2" />
+		<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m4.43 13.22l2.3-4.17c2.3-4.21 3.47-6.32 5.24-6.32s2.93 2.1 5.26 6.3l2.3 4.18c2.2 3.96 3.3 5.95 2.42 7.42c-.87 1.48-3.13 1.48-7.67 1.48h-4.6c-4.51 0-6.78 0-7.65-1.47c-.87-1.48.22-3.46 2.4-7.42" />
+	</g>
+</svg>
+
+
 const ProjectSection: React.FC = () => {
   const bigImages = [naruto, naruto2, naruto3, naruto4];
 
@@ -259,7 +287,7 @@ const ProjectSection: React.FC = () => {
               }`}
               title={`Go to slide ${i + 1}`}
             >
-              💠
+              {dotCircleIcon}
             </button>
           ))}
         </div>
@@ -273,7 +301,7 @@ const ProjectSection: React.FC = () => {
             }`}
             title={isAutoPlay ? 'Pause Auto-slide' : 'Play Auto-slide'}
           >
-            {isAutoPlay ? '⏸️' : '▶️'}
+            {isAutoPlay ? pausIcon : triangleIcon}
           </button>
         </div>
       </div>

@@ -10,6 +10,9 @@ import snowFlake from "../assets/snowFlake.png";
 import ShaderBackground from "../components/shader/ShaderBackground";
 import MouseInteractionMaskShaderBackground from "../components/shader/ColorMaskBGShader";
 import TextureShaderBackground from "../components/shader/Texture2d";
+import UnstoppableBackground from "../components/public/CicleBackground";
+import OrbitSpinner from "../components/public/OrbitSpinner";
+import Profile from "../components/home/Profile";
 const Home:React.FC = () => {
     return (
         <>
@@ -26,6 +29,9 @@ const Home:React.FC = () => {
         minSize={10}
         maxSize={20}
         /> */}
+
+        <UnstoppableBackground/>
+        
 
         <div >
             <NavBar/>
@@ -53,6 +59,7 @@ const Home:React.FC = () => {
 
         </div>
 
+
         <div>
             <ProjectSection/>
         </div>
@@ -60,6 +67,11 @@ const Home:React.FC = () => {
         <div>
             <SkillsSection/>
         </div>
+
+        {/* <div>
+            <ShaderBackground/>
+            <TextureShaderBackground/>
+        </div> */}
 
         <div>
             <Footer/>

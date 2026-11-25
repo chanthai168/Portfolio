@@ -99,7 +99,7 @@ const NavBar = () => {
         variants={menuVariants}
         initial="collapsed"
         animate={isOpen ? "expanded" : "collapsed"}
-        className="bg-white/60 backdrop-blur-sm rounded-full dark:border-0 overflow-hidden relative"
+        className="bg-white/60 nav-glass backdrop-blur-sm rounded-full dark:border-0 overflow-hidden relative"
       >
         {/* Top Bar */}
         <div className="flex items-center justify-between px-4 h-11.5">
