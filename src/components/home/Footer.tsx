@@ -99,7 +99,7 @@ const Footer: React.FC = () => {
   const chars = NAME.split("");
 
   return (
-    <section ref={footerRef} className="w-full  -bg-linear-90 overflow-hidden  bg-layer2/20 text-textColor">
+    <section ref={footerRef} className="w-full  -bg-linear-90 overflow-hidden   text-textColor">
       <div className="mx-auto px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="mb-10 flex flex-col items-center md:px-32 gap-6 sm:mb-14 sm:flex-row sm:items-start sm:justify-between">
           <p className="max-w-md text-base  leading-relaxed sm:text-lg">

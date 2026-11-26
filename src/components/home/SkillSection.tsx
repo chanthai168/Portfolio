@@ -25,7 +25,7 @@ const SkillsSection: React.FC = () => {
   ];
 
   return (
-    <section className=" w-full bg-layer2/20 mt-40 text-textColor">
+    <section className=" w-full  mt-40 text-textColor">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="flex flex-col gap-10 lg:flex-row lg:gap-20">
           {/* Left title */}

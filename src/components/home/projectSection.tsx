@@ -4,32 +4,17 @@ import naruto2 from '../../assets/Screenshot 2026-08-10 065350.png';
 import naruto3 from '../../assets/Screenshot 2026-08-10 065558.png';
 import naruto4 from '../../assets/Screenshot 2026-08-11 163412.png';
 
-const dotCircleIcon = <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
-	<path d="M0 0h24v24H0z" fill="none" />
-	<g fill="none">
-		<circle cx="12" cy="12" r="10.22" fill="currentColor" opacity=".2" transform="rotate(90 12 12)" />
-		<circle cx="12" cy="12" r="10.22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" transform="rotate(90 12 12)" />
-		<path fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.23 12a1.23 1.23 0 1 1-2.46 0a1.23 1.23 0 0 1 2.46 0" />
-	</g>
+const pausIcon = <svg xmlns="http://www.w3.org/2000/svg" width="1.6em" height="1.6em" viewBox="0 0 20 20">
+	<path d="M0 0h20v20H0z" fill="none" />
+	<path fill="currentColor" d="M15 3h-2c-.553 0-1 .048-1 .6v12.8c0 .552.447.6 1 .6h2c.553 0 1-.048 1-.6V3.6c0-.552-.447-.6-1-.6M7 3H5c-.553 0-1 .048-1 .6v12.8c0 .552.447.6 1 .6h2c.553 0 1-.048 1-.6V3.6c0-.552-.447-.6-1-.6" />
 </svg>
 
-const pausIcon = <svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" viewBox="0 0 24 24">
+
+const triangleIcon = <svg xmlns="http://www.w3.org/2000/svg" width="1.6em" height="1.6em" viewBox="0 0 24 24">
 	<path d="M0 0h24v24H0z" fill="none" />
-	<g fill="none">
-		<path fill="currentColor" fill-rule="evenodd" d="M20.9 13.5a8.9 8.9 0 1 1-17.8 0a8.9 8.9 0 0 1 17.8 0" clip-rule="evenodd" opacity=".2" />
-		<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.81 16.5v-6.2m4.38 6.2v-6.2" />
-		<circle cx="12" cy="13.4" r="8.8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
-		<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16.74 1.79H7.26" />
-	</g>
+	<path fill="currentColor" d="M1 21h22L12 2" />
 </svg>
 
-const triangleIcon = <svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" viewBox="0 0 24 24">
-	<path d="M0 0h24v24H0z" fill="none" />
-	<g fill="none">
-		<path fill="currentColor" d="M8.46 6.82L3.62 15.8c-1.42 2.63-2.13 3.95-1.55 4.93s2.07.97 5.07.97h9.7c3 0 4.5 0 5.08-.98c.59-.97-.13-2.3-1.56-4.93l-4.87-8.97c-1.55-2.86-2.33-4.3-3.52-4.29c-1.2 0-1.97 1.44-3.51 4.3" opacity=".2" />
-		<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m4.43 13.22l2.3-4.17c2.3-4.21 3.47-6.32 5.24-6.32s2.93 2.1 5.26 6.3l2.3 4.18c2.2 3.96 3.3 5.95 2.42 7.42c-.87 1.48-3.13 1.48-7.67 1.48h-4.6c-4.51 0-6.78 0-7.65-1.47c-.87-1.48.22-3.46 2.4-7.42" />
-	</g>
-</svg>
 
 
 const ProjectSection: React.FC = () => {
@@ -202,27 +187,17 @@ const ProjectSection: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative mt-20 z-0 pb-6">
+    <div className="relative pt-12 z-0 pb-6 bg-layer1">
       <div
-        className="absolute -z-10 left-1/2 -top-8 h-140 md:h-200 w-[90vw] md:w-[80vw]
-                   -translate-x-1/2 rounded-[400px] bg-gray-200/20 dark:bg-layer2/20"
+        className="absolute -z-10 left-1/2  h-140 md:h-200 w-[90vw] md:w-[80vw]
+                   -translate-x-1/2 rounded-[400px] bg-gray-200 dark:bg-layer2/20"
       ></div>
 
-      <div className="flex flex-col md:flex-row items-center gap-4 md:gap-32 justify-center mb-4 mt-12 pt-12">
+      <div className="flex p-6 lg:pl-24  gap-4 md:gap-32 justify-start  mt-12 pt-12 ">
         <div>
-          <h2 className="text-3xl font-semibold">Swift POS Pro</h2>
+          <h2 className="text-4xl bg-linear-90  from-pink-500 via-purple-500 to-yellow-500  bg-clip-text text-transparent">SwiftPOS Pro</h2>
         </div>
 
-        <div className=" flex  items-center">
-          <div className="flex gap-2">
-            <button className="rounded-xl relative px-8 py-2 border">
-              Learn more
-            </button>
-            <button className="rounded-xl border border-black bg-black px-8 py-2 text-white">
-              Demo now
-            </button>
-          </div>
-        </div>
       </div>
 
       {/* Snap Container */}
@@ -245,19 +220,19 @@ const ProjectSection: React.FC = () => {
             const textData = slideTexts[i] || { line1: '', line2: '' };
 
             return (
-              <div key={`slide-${i}`} className="bg-black rounded-3xl p-4 pb-8 transition-transform duration-150 ease-out origin-center">
+              <div key={`slide-${i}`} className="rounded-3xl p-4 pb-8 transition-transform duration-150 ease-out origin-center">
                 {/* Animated Text Container */}
                 <div
-                  className={`text-white text-lg my-6 ml-6 transition-all duration-500 ease-out ${
+                  className={`text-black/80 text-lg my-6 ml-6 transition-all duration-500 ease-out ${
                     isActive
                       ? 'opacity-100 translate-y-0 scale-100'
                       : 'opacity-40 translate-y-2 scale-95'
                   }`}
                 >
-                  <p className="text-center font-medium transition-transform duration-500">
+                  <p className="text-center font-medium text-2xl transition-transform duration-500">
                     {textData.line1}
                   </p>
-                  <p className="text-center text-sm text-gray-300 transition-transform duration-500 delay-75">
+                  <p className="text-center text-sm text-black/60 transition-transform duration-500 delay-75">
                     {textData.line2}
                   </p>
                 </div>
@@ -265,7 +240,7 @@ const ProjectSection: React.FC = () => {
                 <img
                   src={img}
                   alt={`Big slide ${i + 1}`}
-                  className="h-auto w-[80vw] md:w-[70vw] flex-shrink-0 object-cover shadow-lg snap-center"
+                  className="h-auto w-[96vw] md:w-[65vw] flex-shrink-0 object-cover shadow-lg snap-center"
                   draggable={false}
                 />
               </div>
@@ -277,27 +252,27 @@ const ProjectSection: React.FC = () => {
       {/* Control / Indicator Bar */}
       <div className="flex gap-2 justify-center">
         {/* Slide Selector Buttons */}
-        <div className="relative -top-16 glass px-6 py-2 rounded-full flex gap-3 items-center">
+        <div className="relative -top-16 bg-layer3 px-8 py-5 rounded-full flex gap-4 items-center">
           {bigImages.map((_, i) => (
             <button
               key={`indicator-${i}`}
               onClick={() => scrollToIndex(i)}
-              className={`transition-all duration-300 transform ${
-                activeIndex === i ? 'scale-125 opacity-100' : 'scale-90 opacity-40 hover:opacity-80'
+              className={`transition-all text-black/80 duration-300 transform ${
+                activeIndex === i ? 'scale-100 opacity-100' : 'scale-90 opacity-40 hover:opacity-80'
               }`}
               title={`Go to slide ${i + 1}`}
             >
-              {dotCircleIcon}
+              <span className={`block ${activeIndex === i ? "w-12":"w-3.5"}  h-3.5 rounded-full bg-gray-400 transition-all`}></span>
             </button>
           ))}
         </div>
 
         {/* Toggle Auto-Play Button */}
-        <div className="relative glass -top-16 px-2.5 py-2 rounded-full flex items-center">
+        <div className="relative bg-layer3 -top-16 px-4 py-4 rounded-full flex items-center">
           <button
             onClick={() => setIsAutoPlay(!isAutoPlay)}
-            className={`transition-all duration-300 transform ${
-              isAutoPlay ? 'scale-110 opacity-100 drop-shadow-md' : 'scale-90 opacity-40 hover:opacity-80'
+            className={`transition-all duration-300 text-black/70 rotate-90 transform ${
+              isAutoPlay ? 'scale-110 opacity-100 drop-shadow-md' : 'scale-90  opacity-40 hover:opacity-70'
             }`}
             title={isAutoPlay ? 'Pause Auto-slide' : 'Play Auto-slide'}
           >

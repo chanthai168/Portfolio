@@ -15,7 +15,7 @@ body {
 
 @theme {
     --color-textColor: rgb(232, 237, 240);
-    --color-layer1:#dedcdcd7;
+    --color-layer1:#f8f9fa;
     --color-layer2:#ffffffd1;
     --color-layer3:#eceef2;
     --color-primary:oklch(54.6% 0.245 262.881);

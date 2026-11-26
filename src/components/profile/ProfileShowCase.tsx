@@ -14,9 +14,9 @@ interface FeatureItem {
 
 const FEATURES: FeatureItem[] = [
   {
-    id: 'foldable-design',
+    id: 'profile',
     label: 'Profile',
-    highlight: 'Foldable design.',
+    highlight: 'Profile.',
     description:
       'Engineered with an ultra-thin titanium hinge that folds completely flat with zero visible crease.',
     imageUrl:
@@ -29,38 +29,8 @@ const FEATURES: FeatureItem[] = [
     ),
   },
   {
-    id: 'landscape',
-    label: 'Landscape',
-    highlight: 'Landscape.',
-    description:
-      'Unfold into an expansive widescreen canvas ideal for multitasking, editing, and cinema-grade playback.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'Device in wide landscape orientation',
-    icon: (
-      <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
-        <path d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z" />
-      </svg>
-    ),
-  },
-  {
-    id: 'portrait',
-    label: 'Portrait',
-    highlight: 'Portrait.',
-    description:
-      'Read documents, browse feeds, and view full-length articles with natural vertical proportions.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'Device in tall portrait mode',
-    icon: (
-      <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
-        <path d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z" />
-      </svg>
-    ),
-  },
-  {
     id: 'closed',
-    label: 'Closed',
+    label: 'SwiftPOS',
     highlight: 'Closed.',
     description:
       "Compact and comfortable to hold. With essential controls moved to the side, they're easy to reach. And you get more vertical space for apps.",
@@ -75,7 +45,7 @@ const FEATURES: FeatureItem[] = [
   },
   {
     id: 'seated',
-    label: 'Seated',
+    label: 'EchoPlus',
     highlight: 'Seated.',
     description:
       'Prop it at a natural angle on your desk or table for hands-free video calls and media.',
@@ -90,7 +60,7 @@ const FEATURES: FeatureItem[] = [
   },
   {
     id: 'standing',
-    label: 'Standing',
+    label: 'ManageAura',
     highlight: 'Standing.',
     description:
       'Set it upright like a mini tripod to frame group photos or follow recipes effortlessly.',
@@ -103,9 +73,41 @@ const FEATURES: FeatureItem[] = [
       </svg>
     ),
   },
+
+  {
+    id: 'landscape',
+    label: 'Interest',
+    highlight: 'Landscape.',
+    description:
+      'Unfold into an expansive widescreen canvas ideal for multitasking, editing, and cinema-grade playback.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'Device in wide landscape orientation',
+    icon: (
+      <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
+        <path d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z" />
+      </svg>
+    ),
+  },
+  {
+    id: 'portrait',
+    label: 'Favorith',
+    highlight: 'Portrait.',
+    description:
+      'Read documents, browse feeds, and view full-length articles with natural vertical proportions.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=900&q=80',
+    imageAlt: 'Device in tall portrait mode',
+    icon: (
+      <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
+        <path d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z" />
+      </svg>
+    ),
+  },
+
   {
     id: 'durability',
-    label: 'Durability',
+    label: 'Contact',
     highlight: 'Durability.',
     description:
       'Reinforced with armor aluminum framing, Gorilla Glass Victus, and IPX8 water resistance.',
@@ -118,12 +120,13 @@ const FEATURES: FeatureItem[] = [
       </svg>
     ),
   },
+  
 ];
 
-export const FoldableShowcase: React.FC<{ onClose?: () => void }> = ({
+export const ProfileShowcase: React.FC<{ onClose?: () => void }> = ({
   onClose,
 }) => {
-  const [activeIndex, setActiveIndex] = useState<number>(3);
+  const [activeIndex, setActiveIndex] = useState<number>(0);
   const [direction, setDirection] = useState<'up' | 'down'>('down');
 
   const selectIndex = (nextIdx: number) => {
@@ -143,7 +146,7 @@ export const FoldableShowcase: React.FC<{ onClose?: () => void }> = ({
   };
 
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#f8f9fa] px-0 md:px-6 py-12 font-sans text-[#1d1d1f] selection:bg-blue-500/15">
+    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-layer1 px-0 md:px-6 py-12 font-sans text-[#1d1d1f] selection:bg-blue-500/15">
       {/* Custom Keyframes for Spring & Image Transitions */}
       <style>{`
         @keyframes cardExpand {
@@ -214,7 +217,7 @@ export const FoldableShowcase: React.FC<{ onClose?: () => void }> = ({
           </div>
 
           {/* Interactive Accordion Pill Stack */}
-          <div className="flex flex-1 flex-row md:flex-col items-start gap-3">
+          <div className="flex flex-1 flex-row pl-2 md:flex-col items-start gap-3">
             {FEATURES.map((item, idx) => {
               const isActive = idx === activeIndex;
               const isFirst = idx === 0;
@@ -251,7 +254,7 @@ export const FoldableShowcase: React.FC<{ onClose?: () => void }> = ({
                   >
                     {item.icon}
                   </span>
-                  <span>{item.label}</span>
+                  <p>{item.label}</p>
                 </button>
               );
             })}
@@ -281,4 +284,4 @@ export const FoldableShowcase: React.FC<{ onClose?: () => void }> = ({
   );
 };
 
-export default FoldableShowcase;
+export default ProfileShowcase;
