@@ -12,7 +12,8 @@ import MouseInteractionMaskShaderBackground from "../components/shader/ColorMask
 import TextureShaderBackground from "../components/shader/Texture2d";
 import UnstoppableBackground from "../components/public/CicleBackground";
 import OrbitSpinner from "../components/public/OrbitSpinner";
-import Profile from "../components/home/Profile";
+import Profile from "../components/profile/Profile";
+import FoldableShowcase from "../components/profile/ProfileShowCase";
 const Home:React.FC = () => {
     return (
         <>
@@ -48,6 +49,11 @@ const Home:React.FC = () => {
         <div className="p-4 lg:px-15">
             <Intro/> 
         </div>
+        
+        <FoldableShowcase/>
+
+
+        
 
         <div className=" text-textColor flex flex-col gap-6 mt-32 mb-48">
             <h2 className=" text-center font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-6xl">The agenda for today.</h2>
@@ -58,6 +64,8 @@ const Home:React.FC = () => {
             </div>
 
         </div>
+
+
 
 
         <div>
