@@ -14,10 +14,10 @@ body {
 }
 
 @theme {
-    --color-textColor: rgb(24, 25, 26);
+    --color-textColor: rgb(232, 237, 240);
     --color-layer1:#dedcdcd7;
     --color-layer2:#ffffffd1;
-    --color-layer3:#EFEFEF;
+    --color-layer3:#eceef2;
     --color-primary:oklch(54.6% 0.245 262.881);
     --color-secondary:#D2D0D0;
     --color-indacator:#08C127;
@@ -35,6 +35,9 @@ body {
   --color-secondary: #4a4a4a;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 .my-name{
     font-family: "Playwrite US Trad", cursive;

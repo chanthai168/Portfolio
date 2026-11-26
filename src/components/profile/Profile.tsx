@@ -6,7 +6,7 @@ import RepoGrid from './ProjectGrid';
 const Profile:React.FC =()=>{
     return (
         <>
-        <section className=" flex  items-center justify-center my-56">
+        <section className=" flex h-screen items-center justify-center my-56">
 
             <div className=' flex flex-col items-center'>
 

@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { ThemeToggle } from "./ThemToggle";
 
 const MotionLink = motion.create(Link);
 
@@ -109,7 +108,7 @@ const NavBar = () => {
       initial="collapsed"
       animate="expanded"
       exit="collapsed"
-      className="text-black dark:text-white space-y-1.5"
+      className="text-white space-y-1.5"
     >
       {items.map(({ label, to }, index) => {
         const isHeading = index === 0;
@@ -146,7 +145,7 @@ const NavBar = () => {
       initial="collapsed"
       animate="expanded"
       exit="collapsed"
-      className="text-black dark:text-white space-y-1.5"
+      className="text-white space-y-1.5"
     >
       {items.map(({ label, to }, index) => {
         const isHeading = index === 0;
@@ -212,7 +211,7 @@ const NavBar = () => {
           variants={menuVariants}
           initial="collapsed"
           animate={isOpen ? "expanded" : "collapsed"}
-          className="nav-glass backdrop-blur-sm rounded-full dark:border-0 overflow-hidden relative pointer-events-auto cursor-grab active:cursor-grabbing"
+          className="backdrop-blur-sm bg-white/20 rounded-full dark:border-0 overflow-hidden relative pointer-events-auto cursor-grab active:cursor-grabbing"
         >
           <div className="flex items-center justify-between px-4 h-11.5">
             <div className="flex items-center space-x-2">
@@ -234,17 +233,17 @@ const NavBar = () => {
               <motion.span
                 variants={topBarVariants}
                 animate={isOpen ? "expanded" : "collapsed"}
-                className="block w-6 h-0.5 bg-black dark:bg-white rounded-full origin-center"
+                className="block w-6 h-0.5 bg-white rounded-full origin-center"
               />
               <motion.span
                 variants={middleBarVariants}
                 animate={isOpen ? "expanded" : "collapsed"}
-                className="block w-6 h-0.5 bg-black dark:bg-white rounded-full origin-center"
+                className="block w-6 h-0.5 bg-white rounded-full origin-center"
               />
               <motion.span
                 variants={bottomBarVariants}
                 animate={isOpen ? "expanded" : "collapsed"}
-                className="block w-6 h-0.5 bg-black dark:bg-white rounded-full origin-center"
+                className="block w-6 h-0.5 bg-white rounded-full origin-center"
               />
             </motion.button>
           </div>
@@ -261,9 +260,6 @@ const NavBar = () => {
                 {renderColumn(leftLinks)}
                 {renderColumnV2(rightLinks)}
 
-                <div className="col-span-2 flex justify-end pt-2 pr-2">
-                  <ThemeToggle />
-                </div>
               </motion.div>
             )}
           </AnimatePresence>

@@ -15,7 +15,7 @@ interface FeatureItem {
 const FEATURES: FeatureItem[] = [
   {
     id: 'foldable-design',
-    label: 'Foldable design',
+    label: 'Profile',
     highlight: 'Foldable design.',
     description:
       'Engineered with an ultra-thin titanium hinge that folds completely flat with zero visible crease.',
@@ -143,7 +143,7 @@ export const FoldableShowcase: React.FC<{ onClose?: () => void }> = ({
   };
 
   return (
-    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#f8f9fa] px-6 py-12 font-sans text-[#1d1d1f] selection:bg-blue-500/15">
+    <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#f8f9fa] px-0 md:px-6 py-12 font-sans text-[#1d1d1f] selection:bg-blue-500/15">
       {/* Custom Keyframes for Spring & Image Transitions */}
       <style>{`
         @keyframes cardExpand {
@@ -176,31 +176,20 @@ export const FoldableShowcase: React.FC<{ onClose?: () => void }> = ({
         }
       `}</style>
 
-      {/* Top-Right Close Button */}
-      <button
-        type="button"
-        onClick={onClose}
-        aria-label="Close showcase"
-        className="fixed right-7 top-7 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-[#e8eaed] text-[#3c4043] transition-all duration-200 hover:scale-105 hover:bg-[#dadce0] active:scale-95"
-      >
-        <svg viewBox="0 0 24 24" className="h-4 w-4 stroke-current" fill="none" strokeWidth="2.2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
 
       {/* Main Split Container */}
-      <div className="mx-auto flex w-full max-w-8xl rounded-4xl bg-pink-50 p-12 flex-col  items-center gap-12 lg:flex-row">
+      <div className="mx-auto flex w-full max-w-8xl rounded-4xl bg-layer2 px-0 py-12  md:p-12 flex-col  items-center gap-12 lg:flex-row shadow-lg/2">
         {/* LEFT SIDE: Vertical Stepper Controls + Morphing Pill Stack */}
-        <div className="flex items-center gap-5 lg:col-span-5">
+        <div className="flex items-center w-full overflow-x-scroll no-scrollbar gap-5 lg:col-span-5">
           {/* Up / Down Stepper Pill */}
-          <div className="flex flex-col items-center gap-1.5 rounded-full bg-[#eceef2] p-1.5 shadow-sm">
+          <div className="hidden md:flex flex-col  items-center gap-1.5 rounded-full bg-layer3 p-1.5 shadow-sm">
             <button
               type="button"
               onClick={handlePrev}
               aria-label="Previous feature"
               className="flex h-8 w-8 items-center justify-center rounded-full text-[#3c4043] transition-all duration-200 hover:bg-white hover:shadow-sm active:scale-90"
             >
-              <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+              <svg viewBox="0 0 20 20" fill="currentColor" className="h-6 w-6">
                 <path
                   fillRule="evenodd"
                   d="M14.77 12.79a.75.75 0 01-1.06-.02L10 8.832 6.29 12.77a.75.75 0 11-1.08-1.04l4.25-4.5a.75.75 0 011.08 0l4.25 4.5a.75.75 0 01-.02 1.06z"
@@ -214,7 +203,7 @@ export const FoldableShowcase: React.FC<{ onClose?: () => void }> = ({
               aria-label="Next feature"
               className="flex h-8 w-8 items-center justify-center rounded-full text-[#3c4043] transition-all duration-200 hover:bg-white hover:shadow-sm active:scale-90"
             >
-              <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
+              <svg viewBox="0 0 20 20" fill="currentColor" className="h-6 w-6">
                 <path
                   fillRule="evenodd"
                   d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
@@ -225,7 +214,7 @@ export const FoldableShowcase: React.FC<{ onClose?: () => void }> = ({
           </div>
 
           {/* Interactive Accordion Pill Stack */}
-          <div className="flex flex-1 flex-col items-start gap-3">
+          <div className="flex flex-1 flex-row md:flex-col items-start gap-3">
             {FEATURES.map((item, idx) => {
               const isActive = idx === activeIndex;
               const isFirst = idx === 0;
@@ -234,7 +223,7 @@ export const FoldableShowcase: React.FC<{ onClose?: () => void }> = ({
                 return (
                   <div
                     key={`${item.id}-active`}
-                    className="animate-card-expand w-full max-w-sm rounded-3xl bg-[#eceef2] p-6 text-sm leading-relaxed text-[#3c4043] shadow-sm"
+                    className="hidden md:block animate-card-expand w-full max-w-sm rounded-3xl bg-layer3 p-6 text-md leading-relaxed text-[#3c4043] "
                   >
                     <p>
                       <strong className="font-semibold text-[#1d1d1f]">
@@ -251,7 +240,7 @@ export const FoldableShowcase: React.FC<{ onClose?: () => void }> = ({
                   key={item.id}
                   type="button"
                   onClick={() => selectIndex(idx)}
-                  className="group inline-flex items-center gap-3 rounded-full bg-[#eceef2] px-4 py-2.5 text-sm font-medium text-[#1d1d1f] transition-all duration-300 ease-out hover:translate-x-1.5 hover:bg-[#e2e5eb] hover:shadow-sm active:scale-95"
+                  className="group inline-flex items-center gap-3 rounded-full bg-[#eceef2] px-4 py-4 text-md font-medium text-[#1d1d1f] transition-all duration-300 ease-out hover:translate-x-1.5 hover:bg-[#e2e5eb] hover:shadow-sm active:scale-95"
                 >
                   <span
                     className={`flex h-5 w-5 items-center justify-center rounded-full transition-transform duration-300 group-hover:rotate-90 ${
@@ -277,7 +266,7 @@ export const FoldableShowcase: React.FC<{ onClose?: () => void }> = ({
 
             <div
               key={FEATURES[activeIndex].id}
-              className="animate-image-stage relative h-full w-full overflow-hidden rounded-4xl  border-gray-50 bg-white p-3 shadow-[0_24px_60px_-15px_rgba(0,0,0,0.12)"
+              className="animate-image-stage relative h-full w-full overflow-hidden rounded-4xl  border-gray-50 bg-layer3 shadow-[0_24px_60px_-15px_rgba(0,0,0,0.12)"
             >
               <img
                 src={FEATURES[activeIndex].imageUrl}

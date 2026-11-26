@@ -41,7 +41,7 @@ const Home:React.FC = () => {
             <h1 className="my-name sm:top-10 lg:block text-2xl text-green-500  absolute left-20 top-18">Junior</h1>
             <h1 className="text-[50px] sm:text-[100px] md:text-[130px] lg:text-[160px] text-textColor text-center font-bold flex p-0">Andromeda</h1>
         </div>
-        <div className=" flex flex-col items-center text-xl relative  md:-top-8">
+        <div className=" flex text-textColor/70 flex-col items-center text-xl relative  md:-top-8">
             <p>My <span className=" bg-gray-300 glass p-1 px-2 rounded-full">intention</span> is to build the Sofware </p>
             <p>that feel like a piece of the <span className=" bg-gray-300 glass p-1 px-2 rounded-full">future.</span></p>
         </div>
@@ -50,9 +50,9 @@ const Home:React.FC = () => {
             <Intro/> 
         </div>
         
-        <FoldableShowcase/>
-
-
+        <div className=" mt-24">
+            <FoldableShowcase/>
+        </div>
         
 
         <div className=" text-textColor flex flex-col gap-6 mt-32 mb-48">
