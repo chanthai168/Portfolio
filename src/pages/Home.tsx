@@ -78,17 +78,14 @@ const Home:React.FC = () => {
         <div>
             <SkillShowcase/>
         </div>
-
-        <div>
-            <SkillsSection/>
-        </div>
+ 
 
         {/* <div>
             <ShaderBackground/>
             <TextureShaderBackground/>
         </div> */}
 
-        <div>
+        <div className=" mt-128">
             <Footer/>
         </div>
         </>

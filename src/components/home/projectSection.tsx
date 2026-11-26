@@ -189,7 +189,7 @@ const ProjectSection: React.FC = () => {
   return (
     <div className="relative pt-12 z-0 pb-6 bg-layer1">
       <div
-        className="absolute -z-10 left-1/2  h-140 md:h-200 w-[90vw] md:w-[80vw]
+        className="absolute -z-10 left-1/2 top-45 lg:top-0 h-110  lg:h-140 md:h-200 w-[90vw] md:w-[80vw]
                    -translate-x-1/2 rounded-[400px] bg-gray-200 dark:bg-layer2/20"
       ></div>
 

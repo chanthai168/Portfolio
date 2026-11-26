@@ -1,27 +1,24 @@
 import React, { useState } from 'react';
 
-import me from '../../assets/Frame 57.png'
-
 interface FeatureItem {
   id: string;
   label: string;
   highlight: string;
   description: string;
-  imageUrl: string;
-  imageAlt: string;
+  focusLabel: string;
+  skills: string[];
   icon: React.ReactNode;
 }
 
 const FEATURES: FeatureItem[] = [
   {
-    id: 'profile',
-    label: 'Profile',
-    highlight: 'Profile.',
+    id: 'Overall',
+    label: 'Overall',
+    highlight: 'Full-stack.',
     description:
-      'Engineered with an ultra-thin titanium hinge that folds completely flat with zero visible crease.',
-    imageUrl:
-      me,
-    imageAlt: 'Foldable smartphone sleek hardware design',
+      'I build complete web applications, from designing the user interface to developing APIs and managing data.',
+    focusLabel: 'Core capabilities',
+    skills: ['Problem Solving', 'System Design', 'Full-stack Development', 'REST APIs', 'Git & GitHub'],
     icon: (
       <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
         <path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8l-3.147-3.146z" />
@@ -29,14 +26,13 @@ const FEATURES: FeatureItem[] = [
     ),
   },
   {
-    id: 'closed',
-    label: 'SwiftPOS',
-    highlight: 'Closed.',
+    id: 'Frontend',
+    label: 'Frontend',
+    highlight: 'Frontend.',
     description:
-      "Compact and comfortable to hold. With essential controls moved to the side, they're easy to reach. And you get more vertical space for apps.",
-    imageUrl:
-      'https://images.unsplash.com/photo-1605236453806-6ff36851218e?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'Compact closed cover display',
+      'Creating responsive, accessible interfaces with reusable components and a focus on clear user experiences.',
+    focusLabel: 'Technologies & tools',
+    skills: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'HTML', 'CSS'],
     icon: (
       <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
         <path d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z" />
@@ -44,14 +40,13 @@ const FEATURES: FeatureItem[] = [
     ),
   },
   {
-    id: 'seated',
-    label: 'EchoPlus',
-    highlight: 'Seated.',
+    id: 'Backend',
+    label: 'Backend',
+    highlight: 'Backend.',
     description:
-      'Prop it at a natural angle on your desk or table for hands-free video calls and media.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1585060544812-6b45742d762f?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'Flex mode seated on a table',
+      'Building server-side applications, designing RESTful endpoints, and organizing application logic into maintainable services.',
+    focusLabel: 'Technologies & tools',
+    skills: ['Node.js', 'Express.js', 'NestJS', 'TypeScript', 'REST API', 'JWT', 'Swagger'],
     icon: (
       <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
         <path d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z" />
@@ -59,30 +54,13 @@ const FEATURES: FeatureItem[] = [
     ),
   },
   {
-    id: 'standing',
-    label: 'ManageAura',
-    highlight: 'Standing.',
+    id: 'Database',
+    label: 'Database',
+    highlight: 'Database.',
     description:
-      'Set it upright like a mini tripod to frame group photos or follow recipes effortlessly.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1556656793-08538906a9f8?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'Device standing upright hands-free',
-    icon: (
-      <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
-        <path d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z" />
-      </svg>
-    ),
-  },
-
-  {
-    id: 'landscape',
-    label: 'Interest',
-    highlight: 'Landscape.',
-    description:
-      'Unfold into an expansive widescreen canvas ideal for multitasking, editing, and cinema-grade playback.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'Device in wide landscape orientation',
+      'Designing relational data models, connecting applications to databases, and writing queries for reliable data operations.',
+    focusLabel: 'Technologies & concepts',
+    skills: ['PostgreSQL', 'MySQL', 'Prisma ORM', 'Relational Modeling', 'SQL', 'Database Design'],
     icon: (
       <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
         <path d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z" />
@@ -90,37 +68,61 @@ const FEATURES: FeatureItem[] = [
     ),
   },
   {
-    id: 'portrait',
-    label: 'Favorith',
-    highlight: 'Portrait.',
+    id: 'GameDev',
+    label: 'GameDev',
+    highlight: 'Game development.',
     description:
-      'Read documents, browse feeds, and view full-length articles with natural vertical proportions.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'Device in tall portrait mode',
+      'Exploring interactive 3D experiences, gameplay logic, and player-focused mechanics through hands-on projects.',
+    focusLabel: 'Technologies & concepts',
+    skills: ['Unity', 'C#', '3D Scenes', 'NavMesh', 'Player Interaction', 'Gameplay Systems'],
     icon: (
       <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
         <path d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z" />
       </svg>
     ),
   },
-
   {
-    id: 'durability',
-    label: 'Contact',
-    highlight: 'Durability.',
+    id: 'Mobile',
+    label: 'Mobile',
+    highlight: 'Mobile development.',
     description:
-      'Reinforced with armor aluminum framing, Gorilla Glass Victus, and IPX8 water resistance.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=900&q=80',
-    imageAlt: 'Durable glass and metal frame close-up',
+      'Learning to build mobile applications and work with device capabilities, platform tooling, and app delivery.',
+    focusLabel: 'Current learning areas',
+    skills: ['Flutter', 'Dart', 'Android', 'APK Builds', 'Device Testing'],
     icon: (
       <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
         <path d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z" />
       </svg>
     ),
   },
-  
+  {
+    id: 'Tools',
+    label: 'Tools&Cloud',
+    highlight: 'Tools&cloud.',
+    description:
+      'Using development tools and deployment platforms to test, manage, and deliver applications beyond the local environment.',
+    focusLabel: 'Tools & platforms',
+    skills: ['Git', 'GitHub', 'Postman', 'Docker', 'Linux', 'Render', 'Cloudflare'],
+    icon: (
+      <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
+        <path d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z" />
+      </svg>
+    ),
+  },
+  {
+    id: 'Other',
+    label: 'Other',
+    highlight: 'Other',
+    description:
+      'Team player at heart',
+    focusLabel: 'Communication & Teamwork',
+    skills: ['English', 'Khmer', 'Communication & Softskill',],
+    icon: (
+      <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
+        <path d="M8 2a.75.75 0 01.75.75v4.5h4.5a.75.75 0 010 1.5h-4.5v4.5a.75.75 0 01-1.5 0v-4.5h-4.5a.75.75 0 010-1.5h4.5v-4.5A.75.75 0 018 2z" />
+      </svg>
+    ),
+  },
 ];
 
 export const SkillShowcase: React.FC<{ onClose?: () => void }> = ({
@@ -145,9 +147,11 @@ export const SkillShowcase: React.FC<{ onClose?: () => void }> = ({
     setActiveIndex((prev) => (prev === FEATURES.length - 1 ? 0 : prev + 1));
   };
 
+  const activeFeature = FEATURES[activeIndex];
+
   return (
     <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-layer1 px-0 md:px-6 py-12 font-sans text-[#1d1d1f] selection:bg-blue-500/15">
-      {/* Custom Keyframes for Spring & Image Transitions */}
+      {/* Custom Keyframes for Spring & Content Transitions */}
       <style>{`
         @keyframes cardExpand {
           0% {
@@ -179,13 +183,12 @@ export const SkillShowcase: React.FC<{ onClose?: () => void }> = ({
         }
       `}</style>
 
-
       {/* Main Split Container */}
-      <div className="mx-auto flex w-full max-w-8xl rounded-4xl bg-layer2 px-0 py-12  md:p-12 flex-col-reverse  items-center gap-12 lg:flex-row-reverse shadow-lg/2">
+      <div className="mx-auto flex w-full max-w-8xl rounded-4xl bg-layer1 px-0 py-12 md:p-12 flex-col-reverse items-center gap-12 lg:flex-row-reverse ">
         {/* LEFT SIDE: Vertical Stepper Controls + Morphing Pill Stack */}
-        <div className="flex items-center w-full overflow-x-scroll no-scrollbar gap-5 lg:col-span-5">
+        <div className="flex items-center w-full  overflow-x-scroll no-scrollbar gap-5 lg:col-span-5">
           {/* Up / Down Stepper Pill */}
-          <div className="hidden md:flex flex-col  items-center gap-1.5 rounded-full bg-layer3 p-1.5 shadow-sm">
+          <div className="hidden md:flex flex-col items-center gap-1.5 rounded-full bg-layer3 p-1.5 ">
             <button
               type="button"
               onClick={handlePrev}
@@ -226,7 +229,7 @@ export const SkillShowcase: React.FC<{ onClose?: () => void }> = ({
                 return (
                   <div
                     key={`${item.id}-active`}
-                    className="hidden md:block animate-card-expand w-full max-w-sm rounded-3xl bg-layer3 p-6 text-md leading-relaxed text-[#3c4043] "
+                    className="hidden md:block animate-card-expand w-full max-w-sm rounded-3xl bg-layer3 p-6 text-md leading-relaxed text-[#3c4043]"
                   >
                     <p>
                       <strong className="font-semibold text-[#1d1d1f]">
@@ -261,21 +264,51 @@ export const SkillShowcase: React.FC<{ onClose?: () => void }> = ({
           </div>
         </div>
 
-        {/* RIGHT SIDE: Animated Image Stage */}
-        <div className="flex items-center justify-center rounded-4xl lg:col-span-7 ">
-          <div className="relative flex h-[320px] w-[94vw] max-w-[800px] items-center justify-center sm:h-[420px] lg:h-[520px] lg:w-[800px]">
-            {/* Soft Ambient Radial Glow Behind Device */}
-            <div className="pointer-events-none absolute inset-6  bg-gradient-to-tr from-blue-100/60 via-purple-100/40 to-transparent blur-2xl transition-opacity duration-500" />
+        {/* RIGHT SIDE: Animated Skill Content Stage */}
+        <div className="flex items-center justify-center rounded-4xl lg:col-span-7">
+          <div className="relative flex h-[400px] w-[94vw] max-w-[800px] items-center justify-center sm:h-[420px] lg:h-[520px] lg:w-[800px]">
+            {/* Soft Ambient Radial Glow Behind Content */}
+            <div className="pointer-events-none absolute inset-6 bg-gradient-to-tr from-blue-100/60 via-purple-100/40 to-transparent blur-2xl transition-opacity duration-500" />
 
             <div
-              key={FEATURES[activeIndex].id}
-              className="animate-image-stage relative h-full w-full overflow-hidden rounded-4xl  border-gray-50 bg-layer3 shadow-[0_24px_60px_-15px_rgba(0,0,0,0.12)"
+              key={activeFeature.id}
+              className="animate-image-stage relative h-full w-full overflow-hidden rounded-4xl border-gray-50  bg-layer3 "
             >
-              <img
-                src={FEATURES[activeIndex].imageUrl}
-                alt={FEATURES[activeIndex].imageAlt}
-                className="h-full w-full rounded-[1.5rem] object-cover transition-transform duration-700 ease-out hover:scale-105"
-              />
+              <div className="flex h-full w-full flex-col justify-between rounded-[1.5rem] p-7 sm:p-10 lg:p-12">
+                <div>
+                  <div className="mb-5 flex items-center justify-between">
+                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7b8088]">
+                      Skill set
+                    </span>
+                    <span className="text-xs font-medium tabular-nums text-[#9aa0a6]">
+                      {String(activeIndex + 1).padStart(2, '0')} / {String(FEATURES.length).padStart(2, '0')}
+                    </span>
+                  </div>
+
+                  <h2 className="text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-4xl lg:text-5xl">
+                    {activeFeature.highlight}
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-[#5f6368] sm:text-base sm:leading-8">
+                    {activeFeature.description}
+                  </p>
+                </div>
+
+                <div className="mt-8">
+                  <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-[#7b8088]">
+                    {activeFeature.focusLabel}
+                  </p>
+                  <div className="flex flex-wrap gap-2.5">
+                    {activeFeature.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="rounded-full border border-[#e1e4e8] bg-white/80 px-4 py-2 text-sm font-medium text-[#3c4043] shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

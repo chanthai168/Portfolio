@@ -64,7 +64,7 @@ const Letter: React.FC<{
   return (
     <motion.span
       style={{ y, rotate, display: "inline-block" }}
-      className="text-textColor bg-clip-text will-change-transform"
+      className="text-gray-500/40 bg-clip-text will-change-transform"
     >
       {char === " " ? "\u00A0" : char}
     </motion.span>
