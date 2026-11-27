@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 
+const tageIcon = <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+	<path d="M0 0h24v24H0z" fill="none" />
+	<g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
+		<path stroke-linejoin="round" d="M15.244 21.366a2.164 2.164 0 0 1-3.061 0l-8.549-8.549A2.16 2.16 0 0 1 3 11.287V5.164C3 3.97 3.97 3 5.164 3h6.123c.573 0 1.124.228 1.53.634l8.549 8.549a2.164 2.164 0 0 1 0 3.061z" />
+		<path d="M6.5 6.5L7 7" />
+	</g>
+</svg>
+
+
+
 interface FeatureItem {
   id: string;
   label: string;
   highlight: string;
+  backColor:string;
   description: string;
   focusLabel: string;
   skills: string[];
@@ -15,6 +26,7 @@ const FEATURES: FeatureItem[] = [
     id: 'Overall',
     label: 'Overall',
     highlight: 'Full-stack.',
+    backColor:'bg-pink-500/30',
     description:
       'I build complete web applications, from designing the user interface to developing APIs and managing data.',
     focusLabel: 'Core capabilities',
@@ -29,6 +41,7 @@ const FEATURES: FeatureItem[] = [
     id: 'Frontend',
     label: 'Frontend',
     highlight: 'Frontend.',
+    backColor:'bg-indigo-500/30',
     description:
       'Creating responsive, accessible interfaces with reusable components and a focus on clear user experiences.',
     focusLabel: 'Technologies & tools',
@@ -43,6 +56,7 @@ const FEATURES: FeatureItem[] = [
     id: 'Backend',
     label: 'Backend',
     highlight: 'Backend.',
+    backColor:'bg-red-500/30',
     description:
       'Building server-side applications, designing RESTful endpoints, and organizing application logic into maintainable services.',
     focusLabel: 'Technologies & tools',
@@ -57,6 +71,7 @@ const FEATURES: FeatureItem[] = [
     id: 'Database',
     label: 'Database',
     highlight: 'Database.',
+    backColor:'bg-blue-500/30',
     description:
       'Designing relational data models, connecting applications to databases, and writing queries for reliable data operations.',
     focusLabel: 'Technologies & concepts',
@@ -71,6 +86,7 @@ const FEATURES: FeatureItem[] = [
     id: 'GameDev',
     label: 'GameDev',
     highlight: 'Game development.',
+    backColor:'bg-yellow-500/30',
     description:
       'Exploring interactive 3D experiences, gameplay logic, and player-focused mechanics through hands-on projects.',
     focusLabel: 'Technologies & concepts',
@@ -85,6 +101,7 @@ const FEATURES: FeatureItem[] = [
     id: 'Mobile',
     label: 'Mobile',
     highlight: 'Mobile development.',
+    backColor:'bg-green-500/30',
     description:
       'Learning to build mobile applications and work with device capabilities, platform tooling, and app delivery.',
     focusLabel: 'Current learning areas',
@@ -99,6 +116,7 @@ const FEATURES: FeatureItem[] = [
     id: 'Tools',
     label: 'Tools&Cloud',
     highlight: 'Tools&cloud.',
+    backColor:'bg-purple-500/30',
     description:
       'Using development tools and deployment platforms to test, manage, and deliver applications beyond the local environment.',
     focusLabel: 'Tools & platforms',
@@ -113,6 +131,7 @@ const FEATURES: FeatureItem[] = [
     id: 'Other',
     label: 'Other',
     highlight: 'Other',
+    backColor:'bg-rose-500/30',
     description:
       'Team player at heart',
     focusLabel: 'Communication & Teamwork',
@@ -185,6 +204,8 @@ export const SkillShowcase: React.FC<{ onClose?: () => void }> = ({
 
       {/* Main Split Container */}
       <div className="mx-auto flex w-full max-w-8xl rounded-4xl bg-layer1 px-0 py-12 md:p-12 flex-col-reverse items-center gap-12 lg:flex-row-reverse ">
+        <h2 className=' text-3xl font-semibold my-0 md:my-4'>Little about skill</h2>
+        
         {/* LEFT SIDE: Vertical Stepper Controls + Morphing Pill Stack */}
         <div className="flex items-center w-full  overflow-x-scroll no-scrollbar gap-5 lg:col-span-5">
           {/* Up / Down Stepper Pill */}
@@ -266,44 +287,44 @@ export const SkillShowcase: React.FC<{ onClose?: () => void }> = ({
 
         {/* RIGHT SIDE: Animated Skill Content Stage */}
         <div className="flex items-center justify-center rounded-4xl lg:col-span-7">
-          <div className="relative flex h-[400px] w-[94vw] max-w-[800px] items-center justify-center sm:h-[420px] lg:h-[520px] lg:w-[800px]">
+          <div className="relative flex h-[500px] w-[94vw] max-w-[800px] items-center justify-center sm:h-[420px] lg:h-[520px] lg:w-[800px]">
             {/* Soft Ambient Radial Glow Behind Content */}
-            <div className="pointer-events-none absolute inset-6 bg-gradient-to-tr from-blue-100/60 via-purple-100/40 to-transparent blur-2xl transition-opacity duration-500" />
+            <div className="pointer-events-none absolute inset-6 bg-gradient-to-tr from-purple-500 via-purple-100/40 to-transparent blur-2xl transition-opacity duration-500" />
 
             <div
               key={activeFeature.id}
-              className="animate-image-stage relative h-full w-full overflow-hidden rounded-4xl border-gray-50  bg-layer3 "
+              className={`animate-image-stage relative h-full w-full overflow-hidden rounded-4xl border-gray-50  ${activeFeature.backColor}`}
             >
               <div className="flex h-full w-full flex-col justify-between rounded-[1.5rem] p-7 sm:p-10 lg:p-12">
                 <div>
                   <div className="mb-5 flex items-center justify-between">
-                    <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7b8088]">
+                    <span className="text-xs bg-black px-2 py-1 rounded-full text-white">
                       Skill set
                     </span>
-                    <span className="text-xs font-medium tabular-nums text-[#9aa0a6]">
+                    <span className="text-xs font-medium tabular-nums text-black">
                       {String(activeIndex + 1).padStart(2, '0')} / {String(FEATURES.length).padStart(2, '0')}
                     </span>
                   </div>
 
-                  <h2 className="text-3xl font-semibold tracking-tight text-[#1d1d1f] sm:text-4xl lg:text-5xl">
+                  <h2 className="text-3xl font-semibold tracking-tight text-black sm:text-4xl lg:text-5xl">
                     {activeFeature.highlight}
                   </h2>
-                  <p className="mt-4 max-w-2xl text-sm leading-7 text-[#5f6368] sm:text-base sm:leading-8">
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-black/80 sm:text-base sm:leading-8">
                     {activeFeature.description}
                   </p>
                 </div>
 
                 <div className="mt-8">
-                  <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-[#7b8088]">
+                  <p className="mb-4 text-lg text-black/70">
                     {activeFeature.focusLabel}
                   </p>
                   <div className="flex flex-wrap gap-2.5">
                     {activeFeature.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="rounded-full border border-[#e1e4e8] bg-white/80 px-4 py-2 text-sm font-medium text-[#3c4043] shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
+                        className="rounded-full flex items-center gap-2 bg-white/50 px-6 py-4 text-sm font-medium text-[#3c4043] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
                       >
-                        {skill}
+                        {tageIcon} {skill}
                       </span>
                     ))}
                   </div>

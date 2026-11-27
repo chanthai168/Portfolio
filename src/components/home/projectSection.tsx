@@ -189,11 +189,11 @@ const ProjectSection: React.FC = () => {
   return (
     <div className="relative pt-12 z-0 pb-6 bg-layer1">
       <div
-        className="absolute -z-10 left-1/2 top-45 lg:top-0 h-110  lg:h-140 md:h-200 w-[90vw] md:w-[80vw]
+        className="absolute -z-10 left-1/2 top-45 lg:top-40 h-110  md:h-200 w-[90vw] md:w-[80vw]
                    -translate-x-1/2 rounded-[400px] bg-gray-200 dark:bg-layer2/20"
       ></div>
 
-      <div className="flex p-6 lg:pl-24  gap-4 md:gap-32 justify-start  mt-12 pt-12 ">
+      <div className="flex relative top-6 font-semibold lg:pl-24  gap-4 md:gap-32 justify-center  mt-12 pt-12 ">
         <div>
           <h2 className="text-4xl bg-linear-90  from-pink-500 via-purple-500 to-yellow-500  bg-clip-text text-transparent">SwiftPOS Pro</h2>
         </div>
@@ -240,7 +240,7 @@ const ProjectSection: React.FC = () => {
                 <img
                   src={img}
                   alt={`Big slide ${i + 1}`}
-                  className="h-auto w-[96vw] md:w-[65vw] flex-shrink-0 object-cover shadow-lg snap-center"
+                  className="h-auto w-[96vw] rounded-2xl md:rounded-4xl md:w-[65vw] flex-shrink-0 object-cover shadow-lg snap-center"
                   draggable={false}
                 />
               </div>
@@ -252,7 +252,7 @@ const ProjectSection: React.FC = () => {
       {/* Control / Indicator Bar */}
       <div className="flex gap-2 justify-center">
         {/* Slide Selector Buttons */}
-        <div className="relative -top-16 bg-layer3 px-8 py-5 rounded-full flex gap-4 items-center">
+        <div className="relative -top-16 bg-layer3 px-6 py-4 md:px-8 md:py-5 rounded-full flex gap-4 items-center">
           {bigImages.map((_, i) => (
             <button
               key={`indicator-${i}`}
@@ -262,7 +262,7 @@ const ProjectSection: React.FC = () => {
               }`}
               title={`Go to slide ${i + 1}`}
             >
-              <span className={`block ${activeIndex === i ? "w-12":"w-3.5"}  h-3.5 rounded-full bg-gray-400 transition-all`}></span>
+              <span className={`block ${activeIndex === i ? "w-10 md:w-12":"w-3 md:w-3.5"} h-3 md:h-3.5 rounded-full bg-gray-400 transition-all`}></span>
             </button>
           ))}
         </div>

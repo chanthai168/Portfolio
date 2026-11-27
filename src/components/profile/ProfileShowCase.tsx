@@ -75,6 +75,22 @@ const FEATURES: FeatureItem[] = [
   },
 
   {
+  id: 'Game',
+  label: 'Game',
+  highlight: 'Game.',
+  description:
+    'Engineered with an ultra-thin titanium hinge that folds completely flat with zero visible crease.',
+  imageUrl:
+    me,
+  imageAlt: 'Foldable smartphone sleek hardware design',
+  icon: (
+    <svg viewBox="0 0 16 16" fill="currentColor" className="h-3 w-3">
+      <path d="M5.854 4.854a.5.5 0 1 0-.708-.708l-3.5 3.5a.5.5 0 0 0 0 .708l3.5 3.5a.5.5 0 0 0 .708-.708L2.707 8l3.147-3.146zm4.292 0a.5.5 0 0 1 .708-.708l3.5 3.5a.5.5 0 0 1 0 .708l-3.5 3.5a.5.5 0 0 1-.708-.708L13.293 8l-3.147-3.146z" />
+    </svg>
+  ),
+  },
+
+  {
     id: 'landscape',
     label: 'Interest',
     highlight: 'Landscape.',
@@ -182,9 +198,13 @@ export const ProfileShowcase: React.FC<{ onClose?: () => void }> = ({
 
       {/* Main Split Container */}
       <div className="mx-auto flex w-full max-w-8xl rounded-4xl bg-layer2 px-0 py-12  md:p-12 flex-col  items-center gap-12 lg:flex-row shadow-lg/2">
+        <h2 className=' text-3xl font-semibold my-0 md:my-4'>Little about me</h2>
+        
+
         {/* LEFT SIDE: Vertical Stepper Controls + Morphing Pill Stack */}
         <div className="flex items-center w-full overflow-x-scroll no-scrollbar gap-5 lg:col-span-5">
           {/* Up / Down Stepper Pill */}
+          
           <div className="hidden md:flex flex-col  items-center gap-1.5 rounded-full bg-layer3 p-1.5 shadow-sm">
             <button
               type="button"
