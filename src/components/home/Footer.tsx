@@ -139,7 +139,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <h1 className=" text-[48px] sm:text-[200px] text-center font-bold flex justify-center  pb-6">
+        <h1 className=" text-[48px] relative top-12 sm:text-[200px] text-center font-bold flex justify-center">
           {chars.map((char, i) => (
             <Letter
               key={i}

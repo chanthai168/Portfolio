@@ -13,7 +13,7 @@ type NavItem = {
 };
 
 const leftLinks: NavItem[] = [
-  { label: "Comming Soon " },
+  { label: "Quick Links" },
   { label: "Hero Section", to: "#herosection" },
   { label: "About Me", to: "#aboutme" },
   { label: "Projects", to: "#projects" },
@@ -200,41 +200,22 @@ const NavBar = () => {
       {/* Invisible fullscreen drag boundary (sibling, not parent) */}
       <div
         ref={constraintsRef}
-        className="fixed inset-0 z-[99] pointer-events-none"
+        className="fixed inset-0 z-100 pointer-events-none"
       />
 
       {/* Your original positioning wrapper — visually identical */}
-      <div className="fixed z-100 flex justify-center w-full top-2 -mx-2 pointer-events-none">
+      <div className="fixed z-100 flex justify-center  w-full top-2  pointer-events-none">
         <motion.nav
-          drag
-          dragMomentum={false}
-          dragElastic={0.06}
-          dragConstraints={constraintsRef}
-          onDragStart={() => {
-            wasDragging.current = true;
-          }}
-          onDragEnd={() => {
-            // let the trailing click event fire, then clear the flag
-            setTimeout(() => {
-              wasDragging.current = false;
-            }, 50);
-          }}
-          onClickCapture={(e) => {
-            if (wasDragging.current) {
-              e.preventDefault();
-              e.stopPropagation();
-            }
-          }}
           style={{ touchAction: "none" }}
           variants={menuVariants}
           initial="collapsed"
           animate={isOpen ? "expanded" : "collapsed"}
-          className="backdrop-blur-sm border border-gray-300 bg-white/50 rounded-full dark:border-0 overflow-hidden relative pointer-events-auto cursor-grab active:cursor-grabbing"
+          className="backdrop-blur-sm border border-gray-300/20 bg-white/50 rounded-full dark:border-0 overflow-hidden relative pointer-events-auto active:cursor-grabbing"
         >
           <div className="flex items-center justify-between px-4 h-11.5">
             <div className="flex items-center space-x-2">
-              <div className="w-7 h-7 bg-linear-to-b from-green-400 to-green-500 rounded-2xl flex items-center justify-center text-white text-xs font-bold">
-                T
+              <div className="w-7 h-7 border border-gray-black rounded-2xl flex items-center justify-center text-black ">
+                S
               </div>
             </div>
 
