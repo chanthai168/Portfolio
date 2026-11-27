@@ -40,13 +40,13 @@ const Home:React.FC = () => {
             <NavBar/>
         </div>
         <div id="herosection" className=" flex pt-24 sm:pt-12 justify-center relative ">
-            <h1 className="my-name sm:top-10 lg:block text-2xl text-green-500  absolute left-20 top-18">Junior</h1>
+            <h1 className="my-name hidden md:block sm:top-10 lg:block text-2xl text-green-500  absolute left-20 top-18">Junior</h1>
             {/* <h1 className="text-[50px] sm:text-[100px] md:text-[130px] lg:text-[160px] text-textColor text-center font-bold flex p-0">PORTFOLIO</h1> */}
             <img src={potfolio} alt="" />
         </div>
         <div className=" flex text-textColor/70 flex-col items-center text-lg relative  md:-top-8">
-            <p>My <span className=" bg-gray-300 glass p-1 px-2 rounded-full">intention</span> is to build the Sofware </p>
-            <p>that feel like a piece of the <span className=" bg-gray-300 glass p-1 px-2 rounded-full">future.</span></p>
+            <p>My <span className=" bg-white/10 p-1 px-2 rounded-full">intention</span> is to build the Sofware </p>
+            <p>that feel like a piece of the <span className=" bg-white/10 p-1 px-2 rounded-full">future.</span></p>
         </div>
         
         <div className="p-4 lg:px-15">
