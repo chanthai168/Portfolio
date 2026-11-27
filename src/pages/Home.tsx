@@ -45,10 +45,11 @@ const Home:React.FC = () => {
             {/* <h1 className="text-[50px] sm:text-[100px] md:text-[130px] lg:text-[160px] text-textColor text-center font-bold flex p-0">PORTFOLIO</h1> */}
             <img src={potfolio} alt="" />
         </div>
-        <div className=" flex text-textColor/70 flex-col items-center text-lg relative  md:-top-8">
+        
+        {/* <div className=" flex text-textColor/70 flex-col items-center text-lg relative  md:-top-8">
             <p>My <span className=" bg-white/10 p-1 px-2 rounded-full">intention</span> is to build the Sofware </p>
             <p>that feel like a piece of the <span className=" bg-white/10 p-1 px-2 rounded-full">future.</span></p>
-        </div>
+        </div> */}
         
         <div className="p-4 lg:px-15">
             <Intro/> 

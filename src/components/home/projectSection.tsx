@@ -33,6 +33,7 @@ const ProjectSection: React.FC = () => {
   const isDraggingRef = useRef(false);
   const startXRef = useRef(0);
   const scrollLeftRef = useRef(0);
+  const activeIndexRef = useRef(0);
 
   // Active index & Auto-play states
   const [activeIndex, setActiveIndex] = useState(0);
@@ -73,6 +74,7 @@ const ProjectSection: React.FC = () => {
       child.style.opacity = `${opacity}`;
     });
 
+    activeIndexRef.current = closestIndex;
     setActiveIndex(closestIndex);
   }, []);
 
@@ -106,11 +108,8 @@ const ProjectSection: React.FC = () => {
       // Don't auto-advance while dragging
       if (isDraggingRef.current) return;
 
-      setActiveIndex((prevIndex) => {
-        const nextIndex = (prevIndex + 1) % bigImages.length;
-        scrollToIndex(nextIndex);
-        return nextIndex;
-      });
+      const nextIndex = (activeIndexRef.current + 1) % bigImages.length;
+      scrollToIndex(nextIndex);
     }, 3000); // Scrolls every 3 seconds
 
     return () => clearInterval(interval);
@@ -136,54 +135,46 @@ const ProjectSection: React.FC = () => {
   }, [updateActiveState]);
 
   /* ------------------------------------------------------------------ */
-  /*  DRAG HANDLERS                                                     */
+  /*  DRAG HANDLERS (mouse only - touch uses native scrolling)          */
   /* ------------------------------------------------------------------ */
-  const handleDragStart = (
-    e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
-  ) => {
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     const slider = bigSliderRef.current;
     if (!slider) return;
 
     isDraggingRef.current = true;
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-    startXRef.current = clientX - slider.offsetLeft;
+    startXRef.current = e.clientX;
     scrollLeftRef.current = slider.scrollLeft;
+
     slider.style.cursor = 'grabbing';
+    slider.style.scrollSnapType = 'none'; // snap fights manual scrollLeft
   };
 
-  const handleDragMove = (
-    e: React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
-  ) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!isDraggingRef.current) return;
     const slider = bigSliderRef.current;
     if (!slider) return;
 
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-    const x = clientX - slider.offsetLeft;
-    const walk = (x - startXRef.current) * 1.2;
+    e.preventDefault();
+    const walk = (e.clientX - startXRef.current) * 1.2;
     slider.scrollLeft = scrollLeftRef.current - walk;
   };
 
-  const endDrag = () => {
+  const endDrag = useCallback(() => {
     if (!isDraggingRef.current) return;
     isDraggingRef.current = false;
 
     const slider = bigSliderRef.current;
     if (slider) {
       slider.style.cursor = 'grab';
+      slider.style.scrollSnapType = ''; // restore CSS snap
     }
-  };
+    scrollToIndex(activeIndexRef.current); // settle on nearest slide
+  }, []);
 
   useEffect(() => {
     window.addEventListener('mouseup', endDrag);
-    window.addEventListener('touchend', endDrag);
-    window.addEventListener('touchcancel', endDrag);
-    return () => {
-      window.removeEventListener('mouseup', endDrag);
-      window.removeEventListener('touchend', endDrag);
-      window.removeEventListener('touchcancel', endDrag);
-    };
-  }, []);
+    return () => window.removeEventListener('mouseup', endDrag);
+  }, [endDrag]);
 
   return (
     <div className="relative pt-12 z-0 pb-6 bg-layer1">
@@ -202,12 +193,10 @@ const ProjectSection: React.FC = () => {
       {/* Snap Container */}
       <div
         ref={bigSliderRef}
-        className="mb-4 pb-12 overflow-x-auto cursor-grab scrollbar-hide snap-x snap-mandatory"
+        className="mb-4 pb-12 overflow-x-auto cursor-grab scrollbar-hide snap-x snap-mandatory overscroll-x-contain"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        onMouseDown={handleDragStart}
-        onMouseMove={handleDragMove}
-        onTouchStart={handleDragStart}
-        onTouchMove={handleDragMove}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
       >
         {/* Track with balanced padding so first and last items center naturally */}
         <div
