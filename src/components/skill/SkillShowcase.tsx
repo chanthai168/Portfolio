@@ -148,25 +148,79 @@ export const SkillShowcase: React.FC<{ onClose?: () => void }> = ({
   onClose,
 }) => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [prevIndex, setPrevIndex] = useState<number | null>(null);
+  const [transitionId, setTransitionId] = useState<number>(0);
   const [direction, setDirection] = useState<'up' | 'down'>('down');
 
-  const selectIndex = (nextIdx: number) => {
+  const goTo = (nextIdx: number, dir: 'up' | 'down') => {
     if (nextIdx === activeIndex) return;
-    setDirection(nextIdx > activeIndex ? 'down' : 'up');
+    setDirection(dir);
+    setPrevIndex(activeIndex);
     setActiveIndex(nextIdx);
+    setTransitionId((n) => n + 1);
   };
 
-  const handlePrev = () => {
-    setDirection('up');
-    setActiveIndex((prev) => (prev === 0 ? FEATURES.length - 1 : prev - 1));
-  };
+  const selectIndex = (nextIdx: number) =>
+    goTo(nextIdx, nextIdx > activeIndex ? 'down' : 'up');
 
-  const handleNext = () => {
-    setDirection('down');
-    setActiveIndex((prev) => (prev === FEATURES.length - 1 ? 0 : prev + 1));
-  };
+  const handlePrev = () =>
+    goTo(activeIndex === 0 ? FEATURES.length - 1 : activeIndex - 1, 'up');
+
+  const handleNext = () =>
+    goTo(activeIndex === FEATURES.length - 1 ? 0 : activeIndex + 1, 'down');
+
+  const isDown = direction === 'down';
 
   const activeFeature = FEATURES[activeIndex];
+
+  /** Plain function (not a component) so React never remounts a card mid-flip. */
+  const renderCard = (index: number, withChipAnimation: boolean) => {
+    const f = FEATURES[index];
+    return (
+      // bg-layer1 keeps the card opaque so the tinted (translucent) colour
+      // never lets the card underneath show through while it swings.
+      <div className="relative h-full w-full overflow-hidden rounded-4xl bg-layer1">
+        <div className={`h-full w-full ${f.backColor}`}>
+          <div className="flex h-full w-full flex-col justify-between rounded-[1.5rem] p-7 sm:p-10 lg:p-12">
+            <div>
+              <div className="mb-5 flex items-center justify-between">
+                <span className="text-xs bg-black px-2 py-1 rounded-full text-white">
+                  Skill set
+                </span>
+                <span className="text-xs font-medium tabular-nums text-black">
+                  {String(index + 1).padStart(2, '0')} / {String(FEATURES.length).padStart(2, '0')}
+                </span>
+              </div>
+
+              <h2 className="text-3xl font-semibold tracking-tight text-black sm:text-4xl lg:text-5xl">
+                {f.highlight}
+              </h2>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-black/80 sm:text-base sm:leading-8">
+                {f.description}
+              </p>
+            </div>
+
+            <div className="mt-8">
+              <p className="mb-4 text-lg text-black/70">{f.focusLabel}</p>
+              <div className="flex flex-wrap gap-2.5">
+                {f.skills.map((skill, i) => (
+                  <span
+                    key={skill}
+                    style={withChipAnimation ? { animationDelay: `${420 + i * 70}ms` } : undefined}
+                    className={`rounded-full flex items-center gap-2 bg-white/50 px-6 py-4 text-sm font-medium text-[#3c4043] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${
+                      withChipAnimation ? 'animate-chip-in' : ''
+                    }`}
+                  >
+                    {tageIcon} {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-layer1 px-0 md:px-6 py-12 font-sans text-[#1d1d1f] selection:bg-blue-500/15">
@@ -182,23 +236,66 @@ export const SkillShowcase: React.FC<{ onClose?: () => void }> = ({
             transform: scale(1) translateY(0);
           }
         }
-        @keyframes imageStageEnter {
-          0% {
-            opacity: 0;
-            filter: blur(8px);
-            transform: scale(0.94) translateY(${direction === 'down' ? '24px' : '-24px'});
-          }
-          100% {
-            opacity: 1;
-            filter: blur(0px);
-            transform: scale(1) translateY(0);
-          }
+        /* Page-turn: the top card swings open on a hinge, like a book page */
+        @keyframes pageSwingLeft {
+          0%   { transform: rotateY(0deg) translateZ(0); }
+          50%  { transform: rotateY(-55deg) translateZ(70px); }
+          100% { transform: rotateY(-112deg) translateZ(0); }
+        }
+        @keyframes pageSwingRight {
+          0%   { transform: rotateY(0deg) translateZ(0); }
+          50%  { transform: rotateY(55deg) translateZ(70px); }
+          100% { transform: rotateY(112deg) translateZ(0); }
+        }
+        /* The card underneath rises out of the depth to take its place */
+        @keyframes underlayRise {
+          0%   { transform: translateZ(-220px) scale(0.9); }
+          100% { transform: translateZ(0) scale(1); }
+        }
+        @keyframes shadeOut {
+          0%   { opacity: 0; }
+          100% { opacity: 0.6; }
+        }
+        @keyframes shadeIn {
+          0%   { opacity: 0.5; }
+          100% { opacity: 0; }
+        }
+        @keyframes chipIn {
+          0%   { opacity: 0; transform: translateY(14px) scale(0.9); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
         }
         .animate-card-expand {
           animation: cardExpand 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
-        .animate-image-stage {
-          animation: imageStageEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        .animate-swing-left {
+          transform-origin: left center;
+          animation: pageSwingLeft 0.95s cubic-bezier(0.6, 0, 0.3, 1) forwards;
+          will-change: transform;
+        }
+        .animate-swing-right {
+          transform-origin: right center;
+          animation: pageSwingRight 0.95s cubic-bezier(0.6, 0, 0.3, 1) forwards;
+          will-change: transform;
+        }
+        .animate-underlay-rise {
+          animation: underlayRise 0.95s cubic-bezier(0.6, 0, 0.3, 1) forwards;
+        }
+        .animate-shade-out {
+          animation: shadeOut 0.95s cubic-bezier(0.6, 0, 0.3, 1) forwards;
+        }
+        .animate-shade-in {
+          animation: shadeIn 0.95s cubic-bezier(0.6, 0, 0.3, 1) forwards;
+        }
+        .animate-chip-in {
+          opacity: 0;
+          animation: chipIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .animate-swing-left, .animate-swing-right, .animate-underlay-rise,
+          .animate-shade-out, .animate-shade-in, .animate-chip-in {
+            animation-duration: 0.01ms;
+            animation-delay: 0ms !important;
+          }
         }
       `}</style>
 
@@ -291,45 +388,38 @@ export const SkillShowcase: React.FC<{ onClose?: () => void }> = ({
             {/* Soft Ambient Radial Glow Behind Content */}
             <div className="pointer-events-none absolute inset-6 bg-gradient-to-tr from-purple-500 via-purple-100/40 to-transparent blur-2xl transition-opacity duration-500" />
 
+            {/* Perspective on the parent only: no overflow-hidden here, or the
+                3D context is flattened. Each card clips its own rounded corners. */}
             <div
-              key={activeFeature.id}
-              className={`animate-image-stage relative h-full w-full overflow-hidden rounded-4xl border-gray-50  ${activeFeature.backColor}`}
+              className="relative h-full w-full"
+              style={{ perspective: '1800px', perspectiveOrigin: '50% 45%' }}
             >
-              <div className="flex h-full w-full flex-col justify-between rounded-[1.5rem] p-7 sm:p-10 lg:p-12">
-                <div>
-                  <div className="mb-5 flex items-center justify-between">
-                    <span className="text-xs bg-black px-2 py-1 rounded-full text-white">
-                      Skill set
-                    </span>
-                    <span className="text-xs font-medium tabular-nums text-black">
-                      {String(activeIndex + 1).padStart(2, '0')} / {String(FEATURES.length).padStart(2, '0')}
-                    </span>
-                  </div>
-
-                  <h2 className="text-3xl font-semibold tracking-tight text-black sm:text-4xl lg:text-5xl">
-                    {activeFeature.highlight}
-                  </h2>
-                  <p className="mt-4 max-w-2xl text-sm leading-7 text-black/80 sm:text-base sm:leading-8">
-                    {activeFeature.description}
-                  </p>
-                </div>
-
-                <div className="mt-8">
-                  <p className="mb-4 text-lg text-black/70">
-                    {activeFeature.focusLabel}
-                  </p>
-                  <div className="flex flex-wrap gap-2.5">
-                    {activeFeature.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="rounded-full flex items-center gap-2 bg-white/50 px-6 py-4 text-sm font-medium text-[#3c4043] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md"
-                      >
-                        {tageIcon} {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              {/* Card underneath (always the active one) */}
+              <div
+                key={activeFeature.id}
+                className={`absolute inset-0 ${prevIndex !== null ? 'animate-underlay-rise' : ''}`}
+              >
+                {renderCard(activeIndex, true)}
+                {prevIndex !== null && (
+                  <div className="animate-shade-in pointer-events-none absolute inset-0 rounded-4xl bg-black" />
+                )}
               </div>
+
+              {/* Card on top, swinging away. Hinge side follows the direction. */}
+              {prevIndex !== null && (
+                <div
+                  key={`swing-${transitionId}`}
+                  className={`absolute inset-0 z-10 ${isDown ? 'animate-swing-left' : 'animate-swing-right'}`}
+                  style={{ backfaceVisibility: 'hidden' }}
+                  onAnimationEnd={(e) => {
+                    // ignore bubbling from the shade overlay
+                    if (e.target === e.currentTarget) setPrevIndex(null);
+                  }}
+                >
+                  {renderCard(prevIndex, false)}
+                  <div className="animate-shade-out pointer-events-none absolute inset-0 rounded-4xl bg-black" />
+                </div>
+              )}
             </div>
           </div>
         </div>
