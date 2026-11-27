@@ -6,6 +6,7 @@ import Footer from "../components/home/Footer";
 import SkillsSection from "../components/home/SkillSection";
 import IceParticles from "../components/public/IceParticleV2";
 import snowFlake from "../assets/snowFlake.png";
+import potfolio from "../assets/Frame 161.png"
 
 import ShaderBackground from "../components/shader/ShaderBackground";
 import MouseInteractionMaskShaderBackground from "../components/shader/ColorMaskBGShader";
@@ -38,11 +39,12 @@ const Home:React.FC = () => {
         <div >
             <NavBar/>
         </div>
-        <div className=" flex pt-24 sm:pt-12 justify-center relative ">
+        <div id="herosection" className=" flex pt-24 sm:pt-12 justify-center relative ">
             <h1 className="my-name sm:top-10 lg:block text-2xl text-green-500  absolute left-20 top-18">Junior</h1>
-            <h1 className="text-[50px] sm:text-[100px] md:text-[130px] lg:text-[160px] text-textColor text-center font-bold flex p-0">PORTFOLIO</h1>
+            {/* <h1 className="text-[50px] sm:text-[100px] md:text-[130px] lg:text-[160px] text-textColor text-center font-bold flex p-0">PORTFOLIO</h1> */}
+            <img src={potfolio} alt="" />
         </div>
-        <div className=" flex text-textColor/70 flex-col items-center text-xl relative  md:-top-8">
+        <div className=" flex text-textColor/70 flex-col items-center text-lg relative  md:-top-8">
             <p>My <span className=" bg-gray-300 glass p-1 px-2 rounded-full">intention</span> is to build the Sofware </p>
             <p>that feel like a piece of the <span className=" bg-gray-300 glass p-1 px-2 rounded-full">future.</span></p>
         </div>
@@ -51,18 +53,18 @@ const Home:React.FC = () => {
             <Intro/> 
         </div>
         
-        <div className=" mt-24">
+        <div id="aboutme" className=" mt-24">
             <ProfileShowcase/>
         </div>
 
         
 
-        <div className=" text-black/80 bg-layer1 flex flex-col gap-6 pt-32 pb-48">
+        <div className=" text-black/80 bg-layer1 flex flex-col gap-6 pt-12 pb-10 md:pt-24 md:pb-20">
             <h2 className=" text-center font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-6xl">The agenda for today.</h2>
             <div className=" flex justify-center gap-6 ">
-                <Link to="#" className=" text-lg">Project→</Link>
-                <Link to="#" className=" text-lg">Tools→</Link>
-                <Link to="#" className=" text-lg">Contact→</Link>
+                <Link to="#" className=" text-lg">Project</Link>
+                <Link to="#" className=" text-lg">Tools</Link>
+                <Link to="#" className=" text-lg">Contact</Link>
             </div>
 
         </div>
@@ -70,12 +72,12 @@ const Home:React.FC = () => {
 
 
 
-        <div>
+        <div id="projects">
             <ProjectSection/>
             <ProjectSection/>
         </div>
 
-        <div>
+        <div id="myskill">
             <SkillShowcase/>
         </div>
  

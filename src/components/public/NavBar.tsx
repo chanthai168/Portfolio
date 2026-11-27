@@ -2,7 +2,10 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 
+import sayHi from "../../assets/Say Hi!.gif";
+
 const MotionLink = motion.create(Link);
+const MotionAnchor = motion.a;
 
 type NavItem = {
   label: string;
@@ -10,11 +13,12 @@ type NavItem = {
 };
 
 const leftLinks: NavItem[] = [
-  { label: "Comming Soon →" },
-  { label: "Sukuna", to: "#" },
-  { label: "Thorffin", to: "#" },
-  { label: "Makima", to: "#" },
-  { label: "Raze", to: "#" },
+  { label: "Comming Soon " },
+  { label: "Hero Section", to: "#herosection" },
+  { label: "About Me", to: "#aboutme" },
+  { label: "Projects", to: "#projects" },
+  { label: "My skill", to: "#myskill" },
+  { label: "Footer", to: "#footer" },
 ];
 
 const rightLinks: NavItem[] = [
@@ -121,6 +125,20 @@ const NavBar = () => {
             <motion.div key={label} variants={itemVariants} className={className}>
               {label}
             </motion.div>
+          );
+        }
+
+        if (to.startsWith("#")) {
+          return (
+            <MotionAnchor
+              key={label}
+              href={to}
+              variants={itemVariants}
+              className={className}
+              onClick={closeMenu}
+            >
+              {label}
+            </MotionAnchor>
           );
         }
 
@@ -258,7 +276,8 @@ const NavBar = () => {
                 className="grid grid-cols-2  gap-x-6 gap-y-4 px-4 pt-2"
               >
                 {renderColumn(leftLinks)}
-                {renderColumnV2(rightLinks)}
+
+                <img className="rounded-4xl" src={sayHi} alt="Hi" />
 
               </motion.div>
             )}

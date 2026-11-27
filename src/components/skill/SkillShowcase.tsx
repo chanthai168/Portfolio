@@ -386,7 +386,7 @@ export const SkillShowcase: React.FC<{ onClose?: () => void }> = ({
         <div className="flex items-center justify-center rounded-4xl lg:col-span-7">
           <div className="relative flex h-[500px] w-[94vw] max-w-[800px] items-center justify-center sm:h-[420px] lg:h-[520px] lg:w-[800px]">
             {/* Soft Ambient Radial Glow Behind Content */}
-            <div className="pointer-events-none absolute inset-6 bg-gradient-to-tr from-purple-500 via-purple-100/40 to-transparent blur-2xl transition-opacity duration-500" />
+            <div className="pointer-events-none absolute inset-6 bg-gradient-to-tr from-purple-500 via-purple-500/40 to-blue-500/40 blur-2xl transition-opacity duration-500" />
 
             {/* Perspective on the parent only: no overflow-hidden here, or the
                 3D context is flattened. Each card clips its own rounded corners. */}

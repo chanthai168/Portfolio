@@ -1,7 +1,7 @@
 
 import { useEffect, useRef } from "react";
 
-import textureSrc from '../../assets/flower.png';
+import textureSrc from '../../assets/snowFlake.png';
 
 import {
   createProgram,

@@ -16,7 +16,6 @@ const triangleIcon = <svg xmlns="http://www.w3.org/2000/svg" width="1.6em" heigh
 </svg>
 
 
-
 const ProjectSection: React.FC = () => {
   const bigImages = [naruto, naruto2, naruto3, naruto4];
 

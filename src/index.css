@@ -13,6 +13,10 @@ body {
     box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @theme {
     --color-textColor: rgb(232, 237, 240);
     --color-layer1:#f8f9fa;

@@ -154,7 +154,7 @@ export default function ShaderBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 -z-20 h-full w-full"
+      className="fixed inset-0 -z-20 h-full w-full rounded-4xl"
     />
   );
 }

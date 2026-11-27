@@ -64,7 +64,7 @@ const Letter: React.FC<{
   return (
     <motion.span
       style={{ y, rotate, display: "inline-block" }}
-      className="text-gray-500/40 bg-clip-text will-change-transform"
+      className="text-gray-500/80 bg-clip-text will-change-transform"
     >
       {char === " " ? "\u00A0" : char}
     </motion.span>
@@ -99,7 +99,7 @@ const Footer: React.FC = () => {
   const chars = NAME.split("");
 
   return (
-    <section ref={footerRef} className="w-full  -bg-linear-90 overflow-hidden   text-textColor">
+    <section id="footer" ref={footerRef} className="w-full  -bg-linear-90 overflow-hidden   text-textColor">
       <div className="mx-auto px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="mb-10 flex flex-col items-center md:px-32 gap-6 sm:mb-14 sm:flex-row sm:items-start sm:justify-between">
           <p className="max-w-md text-base  leading-relaxed sm:text-lg">
