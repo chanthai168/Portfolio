@@ -198,24 +198,24 @@ const ProjectSection: React.FC = () => {
         {/* Track with balanced padding so first and last items center naturally */}
         <div
           ref={trackRef}
-          className="flex  w-max items-center px-[calc(50vw-35vw)] md:px-[calc(50vw-25vw)]"
+          className="flex  w-max items-center px-[15vw] md:px-[25vw]"
         >
           {bigImages.map((img, i) => {
             const isActive = activeIndex === i;
             const textData = slideTexts[i] || { line1: '', line2: '' };
 
             return (
-              <div key={`slide-${i}`} className="rounded-3xl  lg:bg-transparent bg-white  lg:bg-linear-0 lg:from-transparent lg:to-transparent p-4 pb-12  mb-4 transition-transform duration-150 ease-out origin-center">
+              <div key={`slide-${i}`} className="rounded-3xl w-[min(92vw,600px)] lg:bg-transparent bg-white  lg:bg-linear-0 lg:from-transparent lg:to-transparent p-4 px-0 pb-12 lg:pb-0  mb-4  transition-transform duration-150 ease-out origin-center">
                 {/* Animated Text Container */}
                 <div
-                  className={`text-black/80 text-lg my-6 ml-6 transition-all duration-500 ease-out ${
+                  className={`text-black/80 text-lg my-6 lg:py-0  transition-all duration-500 ease-out ${
                     isActive
                       ? 'opacity-100 translate-y-0 scale-100'
                       : 'opacity-40 translate-y-2 scale-95'
                   }`}
                 >
 
-                  <p className="  text-mg text-black/70 transition-transform duration-500 delay-75">
+                  <p className="  text-mg  text-black/70 w-[98%] px-2 transition-transform shrink duration-500 delay-75">
                     {textData.line2}
                   </p>
                 </div>
@@ -223,7 +223,7 @@ const ProjectSection: React.FC = () => {
                 <img
                   src={img}
                   alt={`Big slide ${i + 1}`}
-                  className="h-auto w-[98vw] mt-12 lg:mt-0 md:rounded-4xl md:h-[65vh] md:w-auto flex-shrink-0 object-cover snap-center"
+                  className="h-auto w-full  mt-12 lg:mt-0 md:rounded-4xl md:h-[65vh] md:w-auto flex-shrink-0 object-cover snap-center"
                   draggable={false}
                 />
               </div>
@@ -240,8 +240,8 @@ const ProjectSection: React.FC = () => {
             <button
               key={`indicator-${i}`}
               onClick={() => scrollToIndex(i)}
-              className={`transition-all text-black/80 duration-300 transform ${
-                activeIndex === i ? 'scale-100 opacity-100' : 'scale-90 opacity-40 hover:opacity-80'
+              className={`transition-all text-black duration-300 transform ${
+                activeIndex === i ? 'scale-100 opacity-100' : 'scale-90 opacity-80 hover:scale-95'
               }`}
               title={`Go to slide ${i + 1}`}
             >
@@ -251,11 +251,11 @@ const ProjectSection: React.FC = () => {
         </div>
 
         {/* Toggle Auto-Play Button */}
-        <div className="relative bg-layer3 -top-16 px-4 py-4 rounded-full flex items-center">
+        <div className="relative bg-layer3 -top-16 px-3 py-3 rounded-full flex items-center">
           <button
             onClick={() => setIsAutoPlay(!isAutoPlay)}
-            className={`transition-all duration-300 text-black/70 rotate-90 transform ${
-              isAutoPlay ? 'scale-110 opacity-100 drop-shadow-md' : 'scale-90  opacity-40 hover:opacity-70'
+            className={`transition-all duration-300 text-black rotate-90 transform ${
+              isAutoPlay ? 'scale-110 opacity-100 drop-shadow-md' : 'scale-90  opacity-50 hover:opacity-70'
             }`}
             title={isAutoPlay ? 'Pause Auto-slide' : 'Play Auto-slide'}
           >
