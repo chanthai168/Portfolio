@@ -183,7 +183,7 @@ const ProjectSection: React.FC = () => {
                    -translate-x-1/2 rounded-[400px] bg-gray-200 dark:bg-layer2/20"
       ></div>
 
-      <div className="flex relative top-6 font-semibold lg:pl-24  gap-4 md:gap-32 justify-center  mt-12 pt-12 ">
+      <div className="flex relative lg:top-6 font-semibold  gap-4 md:gap-32 lg:justify-center  mt-12 pt-12 pb-8 pl-6 lg:pl-0 lg:pb-0 ">
         <div>
           <h2 className="text-4xl bg-linear-90  from-pink-500 via-purple-500 to-yellow-500  bg-clip-text text-transparent">SwiftPOS Pro</h2>
         </div>
@@ -208,19 +208,19 @@ const ProjectSection: React.FC = () => {
             const textData = slideTexts[i] || { line1: '', line2: '' };
 
             return (
-              <div key={`slide-${i}`} className="rounded-3xl p-4 pb-8 transition-transform duration-150 ease-out origin-center">
+              <div key={`slide-${i}`} className="rounded-3xl w-[96vw] bg-linear-180 from-black to-gray-700 lg:bg-linear-0 lg:from-transparent lg:to-transparent p-4 pb-8 mb-4 transition-transform duration-150 ease-out origin-center">
                 {/* Animated Text Container */}
                 <div
-                  className={`text-black/80 text-lg my-6 ml-6 transition-all duration-500 ease-out ${
+                  className={`text-white/80 lg:text-black/80 text-lg my-6 ml-6 transition-all duration-500 ease-out ${
                     isActive
                       ? 'opacity-100 translate-y-0 scale-100'
                       : 'opacity-40 translate-y-2 scale-95'
                   }`}
                 >
-                  <p className="text-center font-medium text-2xl transition-transform duration-500">
+                  <p className=" lg:text-center font-medium text-xl lg:text-2xl transition-transform duration-500">
                     {textData.line1}
                   </p>
-                  <p className="text-center text-sm text-black/60 transition-transform duration-500 delay-75">
+                  <p className=" lg:text-center text-sm text-white/70 lg:text-black/70 transition-transform duration-500 delay-75">
                     {textData.line2}
                   </p>
                 </div>
@@ -228,7 +228,7 @@ const ProjectSection: React.FC = () => {
                 <img
                   src={img}
                   alt={`Big slide ${i + 1}`}
-                  className="h-auto w-[96vw] rounded-2xl md:rounded-4xl md:w-[65vw] flex-shrink-0 object-cover shadow-lg snap-center"
+                  className="h-auto w-[98vw]  md:rounded-4xl md:w-[65vw] flex-shrink-0 object-cover shadow-lg snap-center"
                   draggable={false}
                 />
               </div>
