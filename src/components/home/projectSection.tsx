@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import naruto from '../../assets/Screenshot 2026-08-11 163412.png';
-import naruto2 from '../../assets/Screenshot 2026-08-10 065350.png';
-import naruto3 from '../../assets/Screenshot 2026-08-10 065558.png';
-import naruto4 from '../../assets/Screenshot 2026-08-11 163412.png';
+import naruto from '../../assets/swiftpos/Frame 58.png';
+import naruto2 from '../../assets/swiftpos/Frame 58.png';
+import naruto3 from '../../assets/swiftpos/Frame 58.png';
+import naruto4 from '../../assets/swiftpos/Frame 58.png';
 
 const pausIcon = <svg xmlns="http://www.w3.org/2000/svg" width="1.6em" height="1.6em" viewBox="0 0 20 20">
 	<path d="M0 0h20v20H0z" fill="none" />
@@ -21,7 +21,7 @@ const ProjectSection: React.FC = () => {
 
   // Array of text variants for each slide
   const slideTexts = [
-    { line1: 'Streamlined Point of sale', line2: 'Fast, intuitive, and reliable checkout' },
+    { line1: 'Streamlined Point of sale', line2: 'Fast, intuitive, and reliable checkout and something so important that i have to put in here' },
     { line1: 'Real-time Analytics & Insights', line2: 'Track inventory and revenue live' },
     { line1: 'Multi-device Synchronization', line2: 'Seamless connectivity across mobile & desktop' },
     { line1: 'Secure Cloud Backup', line2: 'Your data, protected 24/7 everywhere' },
@@ -178,10 +178,7 @@ const ProjectSection: React.FC = () => {
 
   return (
     <div className="relative pt-12 z-0 pb-6 bg-layer1">
-      <div
-        className="absolute -z-10 left-1/2 top-45 lg:top-40 h-110  md:h-200 w-[90vw] md:w-[80vw]
-                   -translate-x-1/2 rounded-[400px] bg-gray-200 dark:bg-layer2/20"
-      ></div>
+
 
       <div className="flex relative lg:top-6 font-semibold  gap-4 md:gap-32 lg:justify-center  mt-12 pt-12 pb-8 pl-6 lg:pl-0 lg:pb-0 ">
         <div>
@@ -208,19 +205,17 @@ const ProjectSection: React.FC = () => {
             const textData = slideTexts[i] || { line1: '', line2: '' };
 
             return (
-              <div key={`slide-${i}`} className="rounded-3xl w-[96vw] bg-linear-180 from-black to-gray-700 lg:bg-linear-0 lg:from-transparent lg:to-transparent p-4 pb-8 mb-4 transition-transform duration-150 ease-out origin-center">
+              <div key={`slide-${i}`} className="rounded-3xl  lg:bg-transparent bg-white  lg:bg-linear-0 lg:from-transparent lg:to-transparent p-4 pb-12  mb-4 transition-transform duration-150 ease-out origin-center">
                 {/* Animated Text Container */}
                 <div
-                  className={`text-white/80 lg:text-black/80 text-lg my-6 ml-6 transition-all duration-500 ease-out ${
+                  className={`text-black/80 text-lg my-6 ml-6 transition-all duration-500 ease-out ${
                     isActive
                       ? 'opacity-100 translate-y-0 scale-100'
                       : 'opacity-40 translate-y-2 scale-95'
                   }`}
                 >
-                  <p className=" lg:text-center font-medium text-xl lg:text-2xl transition-transform duration-500">
-                    {textData.line1}
-                  </p>
-                  <p className=" lg:text-center text-sm text-white/70 lg:text-black/70 transition-transform duration-500 delay-75">
+
+                  <p className="  text-mg text-black/70 transition-transform duration-500 delay-75">
                     {textData.line2}
                   </p>
                 </div>
@@ -228,7 +223,7 @@ const ProjectSection: React.FC = () => {
                 <img
                   src={img}
                   alt={`Big slide ${i + 1}`}
-                  className="h-auto w-[98vw]  md:rounded-4xl md:w-[65vw] flex-shrink-0 object-cover shadow-lg snap-center"
+                  className="h-auto w-[98vw] mt-12 lg:mt-0 md:rounded-4xl md:h-[65vh] md:w-auto flex-shrink-0 object-cover snap-center"
                   draggable={false}
                 />
               </div>
